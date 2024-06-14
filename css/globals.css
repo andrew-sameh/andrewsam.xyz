@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+  
+/* @layer base {
+  :root {
+    --background: 208 36% 100%;
+    --foreground: 208 51% 1%;
+    --muted: 208 40% 85%;
+    --muted-foreground: 208 10% 35%;
+    --popover: 208 36% 100%;
+    --popover-foreground: 208 51% 1%;
+    --card: 0 0% 99%;
+    --card-foreground: 208 51% 0%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --primary: 208 67% 90%;
+    --primary-foreground: 208 67% 30%;
+    --secondary: 208 15% 91%;
+    --secondary-foreground: 208 15% 31%;
+    --accent: 208 15% 91%;
+    --accent-foreground: 208 15% 31%;
+    --destructive: 4 99% 32%;
+    --destructive-foreground: 4 99% 92%;
+    --ring: 208 67% 90%;
+    --radius: 0.3rem;
+  }
+
+  .dark {
+    --background: 208 57% 0%;
+    --foreground: 208 21% 99%;
+    --muted: 208 40% 15%;
+    --muted-foreground: 208 10% 65%;
+    --popover: 208 57% 0%;
+    --popover-foreground: 208 21% 99%;
+    --card: 0 0% 1%;
+    --card-foreground: 0 0% 100%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --primary: 208 67% 90%;
+    --primary-foreground: 208 67% 30%;
+    --secondary: 208 6% 10%;
+    --secondary-foreground: 208 6% 70%;
+    --accent: 208 6% 10%;
+    --accent-foreground: 208 6% 70%;
+    --destructive: 4 99% 46%;
+    --destructive-foreground: 0 0% 100%;
+    --ring: 208 67% 90%;
+  }
+} */
+@layer base {
+  :root {
+    --background: 161 60% 100%;
+    --foreground: 161 73% 4%;
+    --muted: 131 32% 87%;
+    --muted-foreground: 131 14% 27%;
+    --popover: 161 60% 100%;
+    --popover-foreground: 161 73% 4%;
+    --card: 0 0% 99%;
+    --card-foreground: 161 73% 3%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --primary: 161 74% 96%;
+    --primary-foreground: 161 74% 16%;
+    --secondary: 131 74% 96%;
+    --secondary-foreground: 131 74% 16%;
+    --tertiary: 0 0% 96.1%;
+    --tertiary-foreground: 0 0% 9%;
+    --accent: 191 74% 96%;
+    --accent-foreground: 191 74% 16%;
+    --destructive: 13 98% 25%;
+    --destructive-foreground: 13 98% 85%;
+    --ring: 161 74% 96%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 161 59% 3%;
+    --foreground: 161 35% 99%;
+    --muted: 131 32% 13%;
+    --muted-foreground: 131 14% 73%;
+    --popover: 161 59% 3%;
+    --popover-foreground: 161 35% 99%;
+    --card: 161 59% 4%;
+    --card-foreground: 0 0% 100%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --primary: 161 74% 96%;
+    --primary-foreground: 161 74% 16%;
+    --secondary: 131 74% 96%;
+    --secondary-foreground: 131 74% 16%;
+    --tertiary: 0 0% 96.1%;
+    --tertiary-foreground: 0 0% 9%;
+    --accent: 191 74% 96%;
+    --accent-foreground: 191 74% 16%;
+    --destructive: 13 98% 54%;
+    --destructive-foreground: 0 0% 100%;
+    --ring: 161 74% 96%;
+  }
+}
+
+@layer base {
+  * {
+      @apply border-border;
+  }
+  body {
+      @apply bg-background text-foreground;
+  }
+}
+
+
+/* Targeting inserted/removed lines in codeblocks */
+span[style*='background-color: rgba(233, 211, 182, 0.05)'] > span > .linenumber {
+  visibility: hidden;
+}
+
+span[style*='background-color: rgba(233, 211, 182, 0.05)'] > span > .linenumber:after {
+  visibility: visible;
+  content: '+';
+}
+
+span[style*='background-color: rgba(255, 0, 0, 0.1)'] > span > .linenumber {
+  visibility: hidden;
+}
+
+span[style*='background-color: rgba(255, 0, 0, 0.1)'] > span > .linenumber:after {
+  visibility: visible;
+  content: '-';
+}
+
+/* Overwriting pliny/search kbar */
+.bg-gray-300\/50.p-4.backdrop-blur.backdrop-filter {
+  @apply z-[2];
+}
+
+.bg-primary-600 {
+  @apply !bg-primary/25;
+}
+
+.bg-gray-300\/50 .overflow-hidden.rounded-2xl.border.border-gray-100 {
+  @apply rounded-lg border-border bg-background;
+}
+
+.bg-gray-300\/50 .space-x-4.p-4 > input {
+  @apply rounded-md text-foreground placeholder-muted-foreground;
+}
+
+.bg-gray-300\/50 .space-x-4.p-4 > input:focus {
+  @apply border-primary ring-transparent;
+}
+
+.bg-gray-300\/50 .space-x-4.p-4 > kbd {
+  @apply border-border text-muted-foreground;
+}
+
+.overflow-hidden.rounded-2xl.border.border-gray-100 .block.border-t.border-gray-100 {
+  @apply border-t-border text-muted-foreground;
+}
+
+/* Custom react-grid-container */
+/* .react-grid-container {
+  @apply mx-auto max-w-[1200px];
+} */
+
+.react-grid-item {
+  @apply flex select-none items-center rounded-3xl border border-border bg-secondary;
+  /* transition:
+      transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1),
+      all 200ms ease; */
+  /* transition-property: transform, left, top, width, height; */
+}
+
+/* .react-draggable-dragging {
+  @apply !cursor-grabbing;
+} */
+
+.react-grid-placeholder {
+  @apply !bg-primary/75 !duration-500;
+}
+
+/* @media (max-width: 1200px) {
+  .react-grid-container {
+      @apply w-[800px];
+  }
+}
+
+@media (max-width: 800px) {
+  .react-grid-container {
+      @apply w-[375px];
+  }
+} */
+
+@keyframes skeleton {
+  0%,
+  100% {
+      @apply bg-muted;
+  }
+  50% {
+      @apply bg-secondary;
+  }
+}
+
+/* Hiding the react-activity-calendar skeleton */
+article[style*='--react-activity-calendar-level-0:#ebebeb'] {
+  @apply hidden;
+}
+
+svg[width='1372'] {
+  @apply hidden;
+}
+
+/* <Box> styling */
+.my-6.rounded-lg.p-4.bg-secondary.text-center ul {
+  @apply m-0;
+}
+
+/* Table of Contents styling */
+/* Courtesy Gilles Castel (castel.dev) */
+.toc {
+  @apply sticky z-40 top-16 hidden h-0 w-[calc(50vw-50%-4em)] break-words text-xs xl:block;
+  transform: translateX(calc(-100% - 2em)) translateY(2em);
+}
+
+.tocr {
+  @apply sticky top-16 ml-auto hidden h-0 w-[calc(50vw-50%-4em)] break-words text-right text-xs xl:block;
+  transform: translateX(calc(100% + 2em)) translateY(2em);
+}
+
+.toc ul li a {
+  @apply !text-muted-foreground !no-underline transition-all duration-200;
+}
+
+.tocr ul li a {
+  @apply !text-muted-foreground !no-underline transition-all duration-200;
+}
+
+.active-header {
+  @apply font-bold brightness-200;
+}
+
+h1,
+h2,
+h3 {
+  @apply scroll-mt-24;
+}

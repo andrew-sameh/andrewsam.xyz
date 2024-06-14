@@ -1,0 +1,203 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  admin
+  su
+  user
+}
+
+model User {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  email         String?         @unique
+  emailVerified DateTime?
+  image         String?
+  role          Role            @default(user)
+  accounts      Account[]
+  sessions      Session[]
+  password      String?
+  username      String?
+  // Optional for WebAuthn support
+  Authenticator Authenticator[]
+
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  comments  Comment[]
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String   @db.ObjectId
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VerificationToken {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// Optional for WebAuthn support
+model Authenticator {
+  credentialID         String  @id @map("_id")
+  userId               String  @db.ObjectId
+  providerAccountId    String
+  credentialPublicKey  String
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, credentialID])
+}
+
+model GuestUser {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  generatedId String?
+  ip          String     @unique
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  blogLike    BlogLike[]
+}
+
+model Tag {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  slug      String   @unique
+  name      String
+  views     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  blogs     Blog[]   @relation(fields: [blogIds], references: [id])
+  blogIds   String[] @db.ObjectId
+}
+
+model Blog {
+  id             String     @id @default(auto()) @map("_id") @db.ObjectId
+  slug           String     @unique
+  title          String?
+  author         String     @default("andrew")
+  type           String?
+  blogCreatedAt  DateTime?
+  summary        String?
+  layout         String?
+  readingTime    Float?
+  toc            Json?
+  structuredData Json?
+  content        String?
+  views          Int        @default(0)
+  likes          Int        @default(0)
+  tags           Tag[]      @relation(fields: [tagIds], references: [id])
+  tagIds         String[]   @db.ObjectId
+  comments       Comment[]  @relation("BlogComments")
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  blogLikes      BlogLike[]
+}
+
+model BlogLike {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  blogId    String     @db.ObjectId
+  guestId   String    @db.ObjectId
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  count    Int        @default(0)
+  guestUser GuestUser? @relation(fields: [guestId], references: [id])
+  blog      Blog       @relation(fields: [blogId], references: [id])
+  
+  @@unique([guestId, blogId])
+
+}
+
+model Comment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  blogId    String   @db.ObjectId
+  userId    String   @db.ObjectId
+  content   String
+  likes     Int      @default(0)
+  dislikes  Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+  blog      Blog     @relation("BlogComments", fields: [blogId], references: [id])
+}
+
+enum PageType {
+  blogs
+  projects
+  resume
+  tags
+  about
+  home
+  x
+}
+
+model Page {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  slug      String   @unique
+  title     String
+  content   String
+  type      PageType
+  views     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Message {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String
+  content   String
+  status    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
