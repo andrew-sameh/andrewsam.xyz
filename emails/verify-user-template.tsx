@@ -16,13 +16,14 @@ import {
     Tailwind,
   } from "@react-email/components";
   import * as React from "react";
-  
+  import { env } from "@/env.mjs";
+
   interface VerifyUserEmailTemplateProps {
     inviteLink?: string;
   }
   
-  const baseUrl = process.env.VERCEL_URL
-    ? `http://${process.env.VERCEL_URL}`
+  const baseUrl = env.VERCEL_URL
+    ? `http://${env.VERCEL_URL}`
     : "";
   
   export const VerifyUserEmailTemplate = ({

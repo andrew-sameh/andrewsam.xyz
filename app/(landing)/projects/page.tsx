@@ -1,4 +1,4 @@
-import projectsData from '@/data/projectsData'
+import {projectsData} from '@/data/mainData'
 import { ProjectCard } from '@/components/ProjectCard'
 import { genPageMetadata } from 'app/seo'
 import SectionContainer from '@/components/SectionContainer'

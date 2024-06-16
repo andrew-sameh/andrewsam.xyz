@@ -8,12 +8,16 @@ import TopTracks from '@/components/spotify/TopTracks'
 import SectionContainer from '@/components/SectionContainer'
 import RecentPosts from '@/components/RecentPosts'
 import Hero from '@/components/landing/Hero'
-
+import { Technologies } from '@/components/landing/Technologies'
 export default function Home({ posts }) {
   return (
     <>
       <div className="divide-y">
         <Hero />
+        <SectionContainer>
+          <Technologies />
+        </SectionContainer>
+
         <SectionContainer>
           <Suspense fallback="loading..">
             <RecentPosts posts={posts} />

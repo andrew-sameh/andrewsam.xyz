@@ -20,13 +20,15 @@ export const Model: React.FC = () => {
   const color = '#0ea5e9'
   useFrame(() => {
     mesh.current.rotation.y += 0.01;
-    mesh.current.rotation.x += 0.01;
-    mesh.current.rotation.z += 0.01;
+    mesh.current.rotation.x += 0.02;
+    // mesh.current.rotation.z += 0.01;
   });
 
   useEffect(() => {
     if (actions && actions.MorphBake) {
       actions.MorphBake.timeScale = 0.5; // Set the animation speed to half
+      // actions.MorphBake.repetitions = 1 // Prevent the animation
+      // actions.MorphBake.clampWhenFinished = true // Prevent the animation
       actions.MorphBake.play()
     }
   }, [actions])
@@ -40,8 +42,23 @@ export const Model: React.FC = () => {
     })
   }, [scene, color])
 
+  const handlePointerOver = () => {
+    if (actions && actions.MorphBake) {
+      // actions.MorphBake.reset().play()
+      actions.MorphBake.play()
+    }
+  }
+
+  const handlePointerOut = () => {
+    if (actions && actions.MorphBake) {
+      actions.MorphBake.stop()
+    }
+  }
+
   return (
-    <mesh ref={mesh}>
+    <mesh ref={mesh}
+    //  onPointerOver={handlePointerOver}
+     >
       <primitive object={scene} />
     </mesh>
   )

@@ -1,8 +1,9 @@
 import { NotionMagicLinkEmail } from "@/emails/notion-magic-link";
 import { Resend } from "resend";
 import { render } from '@react-email/render';
+import { env } from "@/env.mjs";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(env.RESEND_API_KEY);
 
 export async function POST() {
   try {

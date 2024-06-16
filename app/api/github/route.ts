@@ -1,6 +1,7 @@
 import { GraphqlResponseError, graphql, type GraphQlQueryResponseData } from '@octokit/graphql'
 import { NextRequest, NextResponse } from 'next/server'
 import  siteMetadata  from '@/data/siteMetadata'
+import { env } from "@/env.mjs";
 
 export async function GET(req: NextRequest, res: NextResponse) {
   let repo = req.nextUrl.searchParams.get('repo');
@@ -9,7 +10,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     return NextResponse.json({ message: 'Missing repo query param' }, { status: 400 })
 
   }
-  if (!process.env.GITHUB_API_TOKEN) {
+  if (!env.GITHUB_API_TOKEN) {
     return NextResponse.json({ message: 'Missing `GITHUB_API_TOKEN` env variable' }, { status: 400 })
 
   }
@@ -54,7 +55,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         owner,
         repo,
         headers: {
-          authorization: `token ${process.env.GITHUB_API_TOKEN}`,
+          authorization: `token ${env.GITHUB_API_TOKEN}`,
         },
       }
     )

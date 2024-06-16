@@ -10,13 +10,14 @@ import {
   Text,
 } from "@react-email/components";
 import * as React from "react";
+import { env } from "@/env.mjs";
 
 interface NotionMagicLinkEmailProps {
   loginCode?: string;
 }
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
+const baseUrl = env.VERCEL_URL
+  ? `https://${env.VERCEL_URL}`
   : "";
 
 export const NotionMagicLinkEmail = ({
