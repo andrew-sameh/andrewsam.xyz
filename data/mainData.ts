@@ -10,20 +10,29 @@ export interface Project {
 
 }
 
-export interface Experience {
-  title: string
-  company: string
-  companyId: string
-  location: string
-  startDate: string
-  endDate: string
-  description: string
-  imgSrc: string
+export interface Company {
+  name: string
+  location?: string
+  imgSrc?: string
+  startDate?: string
+  endDate?: string
   url?: string
   active?: boolean
-  techStack: string[]
   hidden?: boolean
+  description?: string
+  descCard?: string
+  items: Experience[]
 
+}
+export interface Experience {
+  title: string
+  roleType: 'Fulltime' | 'Part-time' | 'Consultant' | 'Freelance'
+  startDate: string
+  endDate?: string
+  description: string
+  active?: boolean
+  techStack?: string[]
+  hidden?: boolean
 }
 
 export interface Skill {
@@ -36,6 +45,7 @@ export interface Skill {
   imgSrc?: string
   level: 'advanced' | 'familiar' | 'learning'
   hidden?: boolean
+  href?: string
 }
 
 export let projectsData: Project[] = [
@@ -78,7 +88,64 @@ export let projectsData: Project[] = [
   },
 ]
 
-export let experienceData: Experience[] = []
+export let experienceData: Company[] =
+[
+  {
+    name: 'Valsoft - Aspire',
+    location: 'CA - Remote',
+    description: 'FlairsTech is a software development company that specializes in building custom software solutions for businesses. We help businesses automate their processes and improve their efficiency.',
+    imgSrc: '/static/images/weaverse.png',
+    url: 'https://www.weaverse.io?ref=leohuynh.dev',
+    active: true,
+    items: [
+      {
+        title: 'Backend Developer - DockMaster',
+        roleType: 'Fulltime',
+        startDate: '2024/04/15',
+        description: 'Building the first Hydrogen-driven website builder powered by AI. Weaverse is a Shopify sales channel that allows you to create a website in minutes with no coding required.',
+        techStack: ['react', 'prisma', 'tailwind', 'openai'],
+        active: true,
+      },
+      {
+        title: 'AI Backend Developer - Hospitality Portfolio',
+        roleType: 'Fulltime',
+        startDate: '2023/10/15',
+        endDate: '2024/04/15',
+        description: 'Building the first Hydrogen-driven website builder powered by AI. Weaverse is a Shopify sales channel that allows you to create a website in minutes with no coding required.',
+        techStack: ['react', 'prisma', 'tailwind', 'openai'],
+
+      },
+      {
+        title: 'API Implementation Engineer - InnQuest',
+        roleType: 'Fulltime',
+        startDate: '2022/10/24',
+        endDate: '2023/10/15',
+        description: 'Building the first Hydrogen-driven website builder powered by AI. Weaverse is a Shopify sales channel that allows you to create a website in minutes with no coding required.',
+        techStack: ['react', 'prisma', 'tailwind', 'openai'],
+
+      },
+    ],
+  },
+  {
+    name: 'FlairsTech',
+    location: 'Remote',
+    description: 'FlairsTech is a software development company that specializes in building custom software solutions for businesses. We help businesses automate their processes and improve their efficiency.',
+    imgSrc: '/static/images/weaverse.png',
+    url: 'https://www.weaverse.io?ref=leohuynh.dev',
+    active: true,
+    items: [
+      {
+        title: 'AI Developer',
+        roleType: 'Consultant',
+        startDate: '2023/02/14',
+        description: 'Building the first Hydrogen-driven website builder powered by AI. Weaverse is a Shopify sales channel that allows you to create a website in minutes with no coding required.',
+        techStack: ['swagger', 'fastapi', 'sveltekit', 'openai'],
+        active: true,
+
+      },
+    ],
+  },
+]
 
 export let skillsData: Skill[] = [
   {

@@ -42,7 +42,7 @@ export function Technologies() {
   const categories = Object.keys(filteredSkillsData)
   return (
     <div className="my-10 w-full">
-      <h3 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
+      <h3 className="text-2xl font-extrabold leading-9 tracking-tight sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
         Technologies I've worked with
       </h3>
       <div className="mt-5">
@@ -71,7 +71,8 @@ export function Technologies() {
                       <Tooltip key={skill.id}>
                         <TooltipTrigger asChild>
                           <Button
-                            className={`h-12 p-1 sm:p-2 ${skill.level === 'learning' ? 'border border-green-500' : ''}`}
+                            className={`h-14 p-2 sm:p-2 ${skill.level === 'learning' ? 'border border-green-300' : ''}`}
+                            variant="outline"
                           >
                             <IconsBundle kind={skill.id} size={10} iconType="icon" />
                           </Button>
@@ -86,7 +87,7 @@ export function Technologies() {
                     Updated <time dateTime="2023-11-23">November 23, 2023</time>
                   </div> */}
                   <div className="flex items-center text-xs text-muted-foreground">
-                    <span className="mx-1 inline-block h-4 w-4 rounded-full bg-green-500"></span>
+                    <span className="mx-1 inline-block h-3 w-3 rounded-full bg-green-300"></span>
                     <span>Currently Learning</span>
                   </div>
                   <Pagination className="ml-auto mr-0 w-auto">

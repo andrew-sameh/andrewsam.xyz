@@ -62,32 +62,10 @@ const Header = ({ session }: { session: Session | null }) => {
               {headerNavLinks.map(
                 (link, i) =>
                   !link.hidden && (
-                    <>
-                      {/* <li key={i}>
-                      <Button
-                        disabled={!!link.disabled}
-                        variant={
-                          (pathname.startsWith(link.href) && link.href !== '/') ||
-                          pathname === link.href
-                            ? 'secondary'
-                            : 'outline'
-                        }
-                        // className={` px-3 py-2 text-sm font-medium ${pathname === link.href ? 'bg-accent text-muted-foreground' : 'text-muted-foreground hover:text-foreground'}`}
-                        className={` border-0 px-3 py-2 text-sm font-medium`}
-                        asChild
-                      >
-                        <Link
-                          // className="rounded px-3 py-2 text-sm font-medium text-muted-foreground transition-all duration-300 hover:bg-secondary hover:brightness-125"
-                          href={link.href}
-                        >
-                          {link.title}
-                        </Link>
-                      </Button>
-                    </li> */}
                       <NavigationMenuItem key={link.href}>
-                        <Link href={link.href} legacyBehavior passHref >
+                        <Link href={link.href} key={`link-${link.href}`} legacyBehavior passHref >
                           <NavigationMenuLink
-                          active={pathname.startsWith(link.href) || pathname === link.href}
+                          active={(pathname.startsWith(link.href) && link.href !== '/') || pathname === link.href}
                             className={cn(
                               navigationMenuTriggerStyle(),
                               (pathname.startsWith(link.href) && link.href !== '/') ||
@@ -100,7 +78,6 @@ const Header = ({ session }: { session: Session | null }) => {
                           </NavigationMenuLink>
                         </Link>
                       </NavigationMenuItem>
-                    </>
                   )
               )}
             </NavigationMenuList>

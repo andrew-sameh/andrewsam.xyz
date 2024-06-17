@@ -32,19 +32,18 @@ export default function Hero() {
   }, [])
 
   return (
-    <div className="container mx-auto -mt-20 flex h-screen flex-col content-center justify-center space-y-10 px-4 py-5 text-center">
-      <ModelViewer />
-
+    <div className="container mx-auto -mt-16 flex h-screen flex-col content-center justify-center px-4 py-5 text-center">
+        <ModelViewer />
       <div>
         <ul id="bios" className="hidden">
           <li>Hi it's Andrew!</li>
         </ul>
         <span
           ref={el}
-          className="text-4xl font-extrabold tracking-tighter text-blue-500 sm:text-6xl"
+          className=" text-4xl font-extrabold tracking-tighter text-primary sm:text-6xl"
         />
       </div>
-      <p className="mx-auto mt-10 max-w-md text-gray-500 dark:text-gray-400 md:text-xl lg:text-lg xl:text-xl">
+      <p className="mx-auto mt-3 max-w-md text-gray-500 dark:text-gray-400 md:text-xl lg:text-lg xl:text-xl">
         Vercel's frontend cloud gives developers the workflows, frameworks, and infrastructure to
         build a faster, more personalized Web.
       </p>
@@ -55,7 +54,7 @@ export default function Hero() {
         href="mailto:"
         text="Say Hi!"
         size={5}
-        parentClassName="w-32 mx-auto p-4"
+        parentClassName="w-32 mx-auto p-4 mt-3"
       />
     </div>
   )

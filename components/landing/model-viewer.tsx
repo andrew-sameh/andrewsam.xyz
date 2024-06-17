@@ -17,7 +17,7 @@ export const Model: React.FC = () => {
 
   const { scene, animations } = useGLTF('/spheron.glb')
   const { actions } = useAnimations(animations, mesh)
-  const color = '#0ea5e9'
+  const color = '#1E8FED'
   useFrame(() => {
     mesh.current.rotation.y += 0.01;
     mesh.current.rotation.x += 0.02;

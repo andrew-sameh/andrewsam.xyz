@@ -36,8 +36,8 @@ module.exports = {
         'header-lg': '1199px',
       },
       fontFamily: {
-        display: ["var(--font-sf)", "system-ui", "sans-serif"],
-        default: ["var(--font-inter)", "system-ui", "sans-serif"],
+        // display: ["var(--font-sf)", "system-ui", "sans-serif"],
+        // default: ["var(--font-inter)", "system-ui", "sans-serif"],
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       colors: {

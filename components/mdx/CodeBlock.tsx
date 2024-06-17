@@ -214,7 +214,7 @@ const CodeBlock: FC<CodeBlockProps> = ({
 
 const fetchData = async (src: string): Promise<string> => {
     try {
-        const response = await fetch(`/static/code/${src}.txt`)
+        const response = await fetch(`/static/code_examples/${src}.txt`)
         const text = await response.text()
         return text
     } catch (error) {

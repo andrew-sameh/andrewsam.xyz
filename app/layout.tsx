@@ -5,7 +5,7 @@ import '@/css/twemoji.css'
 // import 'pliny/search/algolia.css'
 import 'remark-github-blockquote-alert/alert.css'
 
-import { Inter as FontSans } from 'next/font/google'
+import { Montserrat as FontSans } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 // import Header from '@/components/Header'
 // import Footer from '@/components/Footer'

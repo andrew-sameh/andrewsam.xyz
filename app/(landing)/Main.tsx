@@ -9,6 +9,8 @@ import SectionContainer from '@/components/SectionContainer'
 import RecentPosts from '@/components/RecentPosts'
 import Hero from '@/components/landing/Hero'
 import { Technologies } from '@/components/landing/Technologies'
+import { Experience } from '@/components/landing/Experience'
+import { GithubCal } from '@/components/landing/GithubCal'
 export default function Home({ posts }) {
   return (
     <>
@@ -17,16 +19,24 @@ export default function Home({ posts }) {
         <SectionContainer>
           <Technologies />
         </SectionContainer>
-
+        <SectionContainer>
+          <Experience />
+        </SectionContainer>
+        <SectionContainer>
+          <Suspense fallback="loading..">
+            <GithubCal />
+          </Suspense>
+        </SectionContainer>
         <SectionContainer>
           <Suspense fallback="loading..">
             <RecentPosts posts={posts} />
           </Suspense>
+        </SectionContainer>
+        <SectionContainer>
           <Suspense fallback="loading..">
             <TopTracks />
           </Suspense>
         </SectionContainer>
-        <div className="h-64 bg-red-300"></div>
         {/* {siteMetadata.newsletter?.provider && (
           <div className="flex items-center justify-center pt-4">{<NewsletterForm />}</div>
         )} */}
