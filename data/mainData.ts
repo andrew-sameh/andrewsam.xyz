@@ -248,6 +248,13 @@ export let skillsData: Skill[] = [
     level: 'advanced',
   },
   {
+    name: 'Fiber',
+    id: 'fiber',
+    category: 'Web Development',
+    field: 'Backend',
+    level: 'learning',
+  },
+  {
     name: 'ShadCN',
     id: 'shadcn',
     category: 'Web Development',
@@ -705,7 +712,7 @@ export let skillsData: Skill[] = [
     id: 'threejs',
     category: 'Web Development',
     field: 'Frontend',
-    level: 'learning',
+    level: 'advanced',
   },
   {
     name: 'Poetry',
@@ -732,7 +739,7 @@ export let skillsData: Skill[] = [
     id: 'framermotion',
     category: 'Web Development',
     field: 'Frontend',
-    level: 'learning',
+    level: 'advanced',
   },
   {
     name: 'VS Code',

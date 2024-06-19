@@ -88,6 +88,7 @@ import {
   Opensource,
   VLLM,
   Locust,
+  Fiber,
 } from './icons'
 
 import Image from 'next/image'
@@ -218,6 +219,7 @@ const components = {
   opensource: Opensource,
   locust: Locust,
   vllm: VLLM,
+  fiber: Fiber,
 }
 
 type IconsBundleProps = {

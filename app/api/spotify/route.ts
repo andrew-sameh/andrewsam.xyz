@@ -27,7 +27,10 @@ export async function GET(req: NextRequest, res: NextResponse) {
     }
     const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
     const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`
-    const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=short_term`
+    const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=10&offset=0`
+    // short_term
+    // medium_term
+    // long_term
     const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
 
     const getAccessToken = async () => {
