@@ -3,7 +3,6 @@ import { z } from "zod"
 
 export const env = createEnv({
   server: {
-    VERCEL_URL: z.string().url().optional(),
     NEXTAUTH_URL: z.string().url(),
     NEXTAUTH_SECRET: z.string().min(1),
     NODE_ENV: z.string().refine((value) => ["development", "production"].includes(value), {
@@ -41,7 +40,6 @@ export const env = createEnv({
   runtimeEnv: {
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
-    VERCEL_URL: process.env.VERCEL_URL,
     NODE_ENV: process.env.NODE_ENV,
     DATABASE_URL: process.env.DATABASE_URL,
     ADMIN_EMAIL: process.env.ADMIN_EMAIL,

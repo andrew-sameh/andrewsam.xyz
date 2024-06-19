@@ -12,10 +12,9 @@ import {
   Text,
 } from "@react-email/components";
 import * as React from "react";
-import { env } from "@/env.mjs";
 
-const baseUrl = env.VERCEL_URL
-  ? `https://${env.VERCEL_URL}`
+const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
   : "";
 
 export const StripeWelcomeEmail = () => (
