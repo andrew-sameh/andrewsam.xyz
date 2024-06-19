@@ -14,7 +14,7 @@ export const metadata = genPageMetadata({ title: 'About' })
 
 export default function Page() {
   const resume = allResumes.find((p) => p.slug === 'default') as Resume
-
+  // Convert resume.toc from string to TOC[]
   return (
     <>
       <SectionContainer>

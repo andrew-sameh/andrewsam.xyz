@@ -6,21 +6,18 @@ import { swrFetcher } from '@/lib/utils'
 import { GithubRepo } from '@/components/GithubRepo'
 import Image from 'next/image'
 import Link from 'next/link'
-import {Card} from '@/components/ui/card'
+import { Card } from '@/components/ui/card'
 interface SWRResponse {
   repository: GithubRepository
 }
 export function ProjectCard({ project }: ProjectCardProps) {
-  let { title, description, imgSrc, url, repo, builtWith } = project
-  let repository: GithubRepository | undefined = undefined
-  if (repo) {
-    let { data } = useSWR(`/api/github?repo=${repo}`, swrFetcher)
-    repository = data?.repository
-  }
-  let href = repository?.url || url
+  const { title, description, imgSrc, url, repo, builtWith } = project
+  const { data } = useSWR(repo ? `/api/github?repo=${repo}` : null, swrFetcher)
+  const repository: GithubRepository | undefined = data?.repository
+  const href = repository?.url || url
 
   return (
-    <Card className="md p-2 md:w-1/2 max-w-[544px] m-2 border-0 shadow-lg">
+    <Card className="md m-2 max-w-[544px] border-0 p-2 shadow-lg md:w-1/2">
       <div className="flex h-full flex-col overflow-hidden rounded-lg border border-transparent">
         <Image
           alt={title}

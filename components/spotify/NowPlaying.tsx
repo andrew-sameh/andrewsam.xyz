@@ -1,7 +1,7 @@
 'use client'
 import { getNowPlaying } from '@/lib/spotify'
 import useSWR from 'swr'
-import { fetcher } from '@/lib/utils'
+import { swrFetcher } from '@/lib/utils'
 import AnimatedBars from './AnimatedBars'
 import { Artist, NowPlayingSong } from './types'
 import { SpotifyNowPlayingData } from '@/types/server'
@@ -40,9 +40,9 @@ async function fetchNowPlaying(): Promise<NowPlayingSong | null> {
   return null
 }
 
-export default async function NowPlaying() {
+export default function NowPlaying() {
   // const nowPlaying = await fetchNowPlaying();
-  let { data } = useSWR<SpotifyNowPlayingData>(`/api/spotify?mode=now-playing`, fetcher)
+  const { data } = useSWR<SpotifyNowPlayingData>(`/api/spotify?mode=now-playing`, swrFetcher)
 
   const nowPlaying = data
 
@@ -66,7 +66,7 @@ export default async function NowPlaying() {
 
   return (
     <div className="mt-4 flex items-center justify-center space-x-2 sm:flex-row sm:justify-start sm:space-x-2">
-        {/* <NextImage
+      {/* <NextImage
           src={nowPlaying.albumImageUrl || ''}
           // src="https://i.scdn.co/image/ab67616d0000b2731a84d71391df7469c5ab8539"
           alt={`Album cover of ${nowPlaying.album}`}

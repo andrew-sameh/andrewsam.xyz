@@ -1,6 +1,6 @@
 import type { ImageProps as NextImageProps } from 'next/image'
 import type React from 'react'
-import type { projectsData } from '@/data/projectsData'
+import type { projectsData } from '@/data/mainData'
 
 export interface PageTitleProps {
   children: React.ReactNode

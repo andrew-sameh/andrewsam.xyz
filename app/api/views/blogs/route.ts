@@ -4,7 +4,7 @@ import { allBlogs } from 'contentlayer/generated'
 import type { Blog } from 'contentlayer/generated'
 
 export async function GET(req: NextRequest, res: NextResponse) {
-  let slug = req.nextUrl.searchParams.get('slug')
+  const slug = req.nextUrl.searchParams.get('slug')
   console.log('slug: ' + slug)
 
   if (!slug) {
@@ -90,14 +90,12 @@ export async function GET(req: NextRequest, res: NextResponse) {
       })
     }
 
-
     return new NextResponse(JSON.stringify({ slug, pageViewCount: postData.views }), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
       },
     })
-
   } catch (error) {
     console.error('Prisma error:', error)
     return new NextResponse(JSON.stringify({ error: 'Internal server error' }), {
@@ -135,7 +133,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     // if (!isNew) {
     //   return new NextResponse('Duplicate request', { status: 202 })
     // }
-    
+
     // const pageViewKey = `pageviews:projects:${slug}`
     // await redis.incr(pageViewKey)
 
@@ -175,7 +173,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         },
       })
     }
-
 
     return new NextResponse('Request processed', { status: 202 })
   } catch (error) {

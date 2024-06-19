@@ -1,27 +1,30 @@
+// import { env } from "@/env.mjs";
+
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Andrew Sameh Blog',
+  title: 'Andrew Sameh',
   author: 'Andrew Sameh',
   headerTitle: 'Andrew Sameh',
-  description: 'A blog created with Next.js and Tailwind.css',
+  description: `An over-engineered personal blog where I write about software engineering, productivity, and other stupid stuff. Also, it's my portfolio.`,
   language: 'en-us',
-  theme: 'dark', // system, dark or light
+  theme: 'system', // system, dark or light
   siteUrl: 'https://www.andrewsam.xyz',
   analyticsURL:
   "https://cloud.umami.is/share/Uyouy7mKI5Oy68QX/andrewsam.xyz",
   siteRepo: 'https://github.com/andrew-sameh/andrewsam.xyz',
-  siteLogo: '/static/images/logo.png',
+  siteLogo: '/static/images/site/logo.png',
   socialBanner: '/static/images/twitter-card.png',
   // mastodon: 'https://mastodon.social/@mastodonuser',
-  email: 'address@yoursite.com',
-  github: 'andrew-sameh',
-  // x: 'https://twitter.com/x',
-  // twitter: 'https://twitter.com/Twitter',
-  facebook: 'https://facebook.com',
+  email: 'g.andrewsameh@gmail.com',
+  github: 'https://github.com/andrew-sameh',
+  x: 'https://twitter.com/AndrewSamh',
+  twitter: 'https://twitter.com/AndrewSamh',
+  // facebook: 'https://facebook.com',
   // youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
+  linkedin: 'https://www.linkedin.com/in/andrewsameh/',
   // threads: 'https://www.threads.net',
-  instagram: 'https://www.instagram.com',
+  instagram: 'https://www.instagram.com/andrewzameh/',
+  spotify: 'https://open.spotify.com/user/nm8cvqw3q56ft39knd63d1dgw',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the
@@ -48,7 +51,7 @@ const siteMetadata = {
   newsletter: {
     // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus
     // Please add your .env file and modify it according to your selection
-    provider: 'buttondown',
+    // provider: 'buttondown',
   },
   comments: {
     // If you want to use an analytics provider you have to add it to the

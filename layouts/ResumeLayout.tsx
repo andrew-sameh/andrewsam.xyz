@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { ReactNode } from 'react'
 import type { TOC } from '@/types/server'
 
@@ -6,9 +7,9 @@ import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import { ToC } from '@/components/ToC'
 
 interface LayoutProps {
-    toc: TOC[] | any
-    children: ReactNode
-  }
+  toc: TOC[] | any
+  children: ReactNode
+}
 
 function ResumeLayout({ children, toc }: LayoutProps) {
   return (

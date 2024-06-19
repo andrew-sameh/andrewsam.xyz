@@ -12,9 +12,9 @@ export default function Footer() {
       <SectionContainer>
         <div className="mb-0 flex flex-col justify-start space-x-0 space-y-3 py-10">
           <div className="flex flex-col items-center space-y-3 text-sm sm:flex-row sm:justify-between sm:text-base">
-            <Suspense fallback="loading...">
-              <NowPlaying />
-            </Suspense>
+            {/* <Suspense fallback="loading..."> */}
+            <NowPlaying />
+            {/* </Suspense> */}
             <ul className="flex cursor-pointer items-center space-x-5">
               <li>
                 <IconsBundle kind="linkedin" href={siteMetadata.linkedin} size={5} />
@@ -26,7 +26,7 @@ export default function Footer() {
                 <IconsBundle kind="mail" href={`mailto:${siteMetadata.email}`} size={5} />
               </li>
               <li>
-                <IconsBundle kind="spotify" href={'siteMetadata.spotify'} size={5} />
+                <IconsBundle kind="spotify" href={siteMetadata.spotify} size={5} />
               </li>
               <li>
                 <IconsBundle kind="instagram" href={siteMetadata.instagram} size={5} />
@@ -35,7 +35,7 @@ export default function Footer() {
               <IconsBundle kind="twitter" href={siteMetadata.twitter} size={6} />
             </li> */}
               {/* <li>
-              <IconsBundle kind="x" href={siteMetadata.x} size={6} />
+              <IconsBundle kind="x" href={siteMetadata.x} size={5} />
             </li> */}
               {/* <li>
               <IconsBundle kind="threads" href={siteMetadata.threads} size={6} />
@@ -61,12 +61,12 @@ export default function Footer() {
               <li>{`Powered by`}</li>
               <li>{` • `}</li>
               <li>
-                <IconsBundle kind="nextjs" href={'siteMetadata.linkedin'} size={5} hover={false} />
+                <IconsBundle kind="nextjs" href={'https://nextjs.org/'} size={5} hover={false} />
               </li>
               <li>
                 <IconsBundle
                   kind="typescript"
-                  href={'siteMetadata.linkedin'}
+                  href={'https://www.typescriptlang.org/'}
                   size={5}
                   hover={false}
                 />
@@ -74,42 +74,27 @@ export default function Footer() {
               <li>
                 <IconsBundle
                   kind="tailwind"
-                  href={`mailto:${'siteMetadata.linkedin'}`}
+                  href={`https://tailwindcss.com/`}
                   size={5}
                   hover={false}
                 />
               </li>
               <li>
-                <IconsBundle
-                  kind="shadcn"
-                  href={`mailto:${'siteMetadata.linkedin'}`}
-                  size={5}
-                  hover={false}
-                />
+                <IconsBundle kind="shadcn" href={`https://ui.shadcn.com/`} size={5} hover={false} />
               </li>
               <li>
                 <IconsBundle
                   kind="mongodb"
-                  href={`mailto:${'siteMetadata.linkedin'}`}
+                  href={`https://www.mongodb.com/`}
                   size={5}
                   hover={false}
                 />
               </li>
               <li>
-                <IconsBundle
-                  kind="prisma"
-                  href={`mailto:${'siteMetadata.linkedin'}`}
-                  size={5}
-                  hover={false}
-                />
+                <IconsBundle kind="prisma" href={`https://www.prisma.io/`} size={5} hover={false} />
               </li>
               <li>
-                <IconsBundle
-                  kind="umami"
-                  href={`mailto:${'siteMetadata.linkedin'}`}
-                  size={5}
-                  hover={false}
-                />
+                <IconsBundle kind="umami" href={`https://umami.is/`} size={5} hover={false} />
               </li>
               {/* <li>
               <IconsBundle kind="markdown" href={`mailto:${"siteMetadata.linkedin"}`} size={5}  hover={false}/>

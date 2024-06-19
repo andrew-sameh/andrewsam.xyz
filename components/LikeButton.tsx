@@ -38,7 +38,7 @@ export const HeartButton: React.FC<{ slug: string }> = ({ slug }) => {
 
   return (
     <div
-      className={`fixed z-50 bottom-8 left-8 hidden flex-col gap-3 ${show ? 'md:flex' : 'md:hidden'}`}
+      className={`fixed bottom-8 left-8 z-50 hidden flex-col gap-3 ${show ? 'md:flex' : 'md:hidden'}`}
     >
       <div className="flex flex-col items-center gap-2">
         {/* <button
@@ -58,7 +58,7 @@ export const HeartButton: React.FC<{ slug: string }> = ({ slug }) => {
         </button> */}
 
         <button
-          className="h-10 w-32 duration-400 flex cursor-pointer items-center justify-center rounded-full border-8 border-solid border-red-200 bg-gray-200 p-5 px-6 font-mono text-lg font-extrabold text-gray-600 shadow-inner transition-transform ease-in-out hover:scale-105 hover:bg-gray-300"
+          className="duration-400 flex h-10 w-32 cursor-pointer items-center justify-center rounded-full border-8 border-solid border-red-200 bg-gray-200 p-5 px-6 font-mono text-lg font-extrabold text-gray-600 shadow-inner transition-transform ease-in-out hover:scale-105 hover:bg-gray-300"
           onClick={handleLike}
         >
           <svg
@@ -76,7 +76,7 @@ export const HeartButton: React.FC<{ slug: string }> = ({ slug }) => {
             viewBox="0 0 24 24"
             width="32"
             height="32"
-            className="filled absolute opacity-0 top-5 left-6 fill-red-500 transition-opacity duration-100 ease-in-out"
+            className="filled absolute left-6 top-5 fill-red-500 opacity-0 transition-opacity duration-100 ease-in-out"
           >
             <path fill="none" d="M0 0H24V24H0z"></path>
             <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path>

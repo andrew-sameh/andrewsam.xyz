@@ -7,8 +7,89 @@ import {
   Mongodb,
   Markdown,
   Prisma,
-  Pinecone
+  // Pinecone,
+  Bash,
+  Django,
+  Linux,
+  Docker,
+  VsCode,
+  Azure,
+  Arduino,
+  AzureDevOps,
+  CLang,
+  CSS,
+  DBeaver,
+  FastAPI,
+  Flask,
+  GoLang,
+  GraphQL,
+  HTML,
+  JavaScript,
+  JSON,
+  Jira,
+  Kaggle,
+  Kub,
+  NGINX,
+  NodeJs,
+  Notion,
+  Pandas,
+  Plotly,
+  PlayWright,
+  Powershell,
+  Postgres,
+  Pytest,
+  Python,
+  React,
+  Redis,
+  Selenium,
+  Streamlit,
+  Svelte,
+  Swagger,
+  Vercel,
+  Vite,
+  Windows,
+  Yarn,
+  Yaml,
+  AWS,
+  Anaconda,
+  Git,
+  PyTorch,
+  BootStrap,
+  NodeJS,
+  Postman,
+  Sanity,
+  SvelteKit,
+  Numpy,
+  Matplotlib,
+  Jupyter,
+  SciKitLearn,
+  Gradio,
+  Grafana,
+  Celery,
+  TestRail,
+  LangChain,
+  Seaborn,
+  PowerBi,
+  DataDog,
+  HuggingFace,
+  Pinecone,
+  Rust,
+  ThreeJS,
+  Node,
+  Poetry,
+  MySQL,
+  PNPM,
+  GithubActions,
+  FramerMotion,
+  RabbitMQ,
+  Tableau,
+  MeiliSearch,
+  Mistral,
+  Opensource,
+  VLLM,
+  Locust,
 } from './icons'
+
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -25,12 +106,12 @@ import { RiTwitterXFill } from 'react-icons/ri'
 import { RiMastodonFill } from 'react-icons/ri'
 import { RiThreadsFill } from 'react-icons/ri'
 import { AiFillInstagram } from 'react-icons/ai'
-import { LuExternalLink } from "react-icons/lu";
-import { LuGitFork } from "react-icons/lu";
-import { LuStar } from "react-icons/lu";
-import { RiOpenaiFill } from "react-icons/ri";
-import { LuSearch } from "react-icons/lu";
-import { BsSearchHeartFill } from "react-icons/bs";
+import { LuExternalLink } from 'react-icons/lu'
+import { LuGitFork } from 'react-icons/lu'
+import { LuStar } from 'react-icons/lu'
+import { RiOpenaiFill } from 'react-icons/ri'
+import { LuSearch } from 'react-icons/lu'
+import { BsSearchHeartFill } from 'react-icons/bs'
 
 const components = {
   mail: LuMail,
@@ -50,7 +131,6 @@ const components = {
   openai: RiOpenaiFill,
   search: LuSearch,
   searchHeart: BsSearchHeartFill,
-
   nextjs: NextJs,
   tailwind: Tailwind,
   typescript: TypeScript,
@@ -60,10 +140,88 @@ const components = {
   markdown: Markdown,
   prisma: Prisma,
   pinecone: Pinecone,
+  bash: Bash,
+  django: Django,
+  linux: Linux,
+  docker: Docker,
+  vscode: VsCode,
+  azure: Azure,
+  arduino: Arduino,
+  azuredevops: AzureDevOps,
+  clang: CLang,
+  css: CSS,
+  dbeaver: DBeaver,
+  fastapi: FastAPI,
+  flask: Flask,
+  golang: GoLang,
+  graphql: GraphQL,
+  html: HTML,
+  javascript: JavaScript,
+  json: JSON,
+  jira: Jira,
+  kaggle: Kaggle,
+  kub: Kub,
+  nginx: NGINX,
+  nodejs: NodeJs,
+  notion: Notion,
+  pandas: Pandas,
+  plotly: Plotly,
+  playwright: PlayWright,
+  powershell: Powershell,
+  postgres: Postgres,
+  pytest: Pytest,
+  python: Python,
+  react: React,
+  redis: Redis,
+  selenium: Selenium,
+  streamlit: Streamlit,
+  svelte: Svelte,
+  swagger: Swagger,
+  vercel: Vercel,
+  vite: Vite,
+  windows: Windows,
+  yarn: Yarn,
+  yaml: Yaml,
+  aws: AWS,
+  anaconda: Anaconda,
+  git: Git,
+  pytorch: PyTorch,
+  bootstrap: BootStrap,
+  postman: Postman,
+  sanity: Sanity,
+  sveltekit: SvelteKit,
+  numpy: Numpy,
+  matplotlib: Matplotlib,
+  jupyter: Jupyter,
+  scikitlearn: SciKitLearn,
+  grafana: Grafana,
+  gradio: Gradio,
+  celery: Celery,
+  testrail: TestRail,
+  langchain: LangChain,
+  seaborn: Seaborn,
+  powerbi: PowerBi,
+  datadog: DataDog,
+  huggingface: HuggingFace,
+  rust: Rust,
+  threejs: ThreeJS,
+  node: Node,
+  poetry: Poetry,
+  mysql: MySQL,
+  pnpm: PNPM,
+  githubactions: GithubActions,
+  framermotion: FramerMotion,
+  rabbitmq: RabbitMQ,
+  tableau: Tableau,
+  meilisearch: MeiliSearch,
+  mistral: Mistral,
+  opensource: Opensource,
+  locust: Locust,
+  vllm: VLLM,
 }
 
 type IconsBundleProps = {
-  kind: keyof typeof components
+  kind: keyof typeof components | string
   href?: string | undefined
   size?: number
   hover?: boolean
@@ -91,6 +249,11 @@ const IconsBundle = ({
 }: IconsBundleProps) => {
   const SocialSvg = components[kind]
 
+  // check if kind already exists in the components object
+  if (kind in components === false) {
+    return null
+  }
+
   // if (!href || (kind === 'mail' && !/^mailto:\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(href)))
   //   return (
   //     <SocialSvg
@@ -99,23 +262,25 @@ const IconsBundle = ({
   //   )
   // convert tailwind size to px
 
-  const combinedClass = cn(
-    `${text ? 'mr-2' : ''}  h-${size} w-${size}`,
-    className
-  )
+  const combinedClass = cn(`${text ? 'mr-2' : ''}  h-${size} w-${size}`, className)
 
   const combinedParentClass = cn(
     'flex items-center justify-center',
-    `${hover ? 'hover:text-blue-500 dark:hover:text-blue-400' : ''}`,
+    `${hover ? 'hover:text-sky-900 dark:hover:text-sky-900' : ''}`,
     parentClassName
   )
 
   if (iconType === 'LinkButton' && href) {
     return (
-      <Button variant={variant} size={ !text ? "icon" : "default"} className={combinedParentClass} asChild>
+      <Button
+        variant={variant}
+        size={!text ? 'icon' : 'default'}
+        className={combinedParentClass}
+        asChild
+      >
         <Link href={href} target={target}>
           <span className="sr-only">{kind}</span>
-          <SocialSvg className={combinedClass} strokeWidth={strokeWidth}/>
+          <SocialSvg className={combinedClass} strokeWidth={strokeWidth} />
           {text}
         </Link>
       </Button>
@@ -132,12 +297,17 @@ const IconsBundle = ({
   }
 
   if (iconType === 'icon') {
-    return <SocialSvg className={cn(`h-${size} w-${size}`,className)} strokeWidth={strokeWidth} />
+    return <SocialSvg className={cn(`h-${size} w-${size}`, className)} strokeWidth={strokeWidth} />
   }
 
   if (iconType === 'linkButton' && href) {
     return (
-      <Button variant={variant} size={ !text ? "icon" : "default"} className={parentClassName} asChild>
+      <Button
+        variant={variant}
+        size={!text ? 'icon' : 'default'}
+        className={parentClassName}
+        asChild
+      >
         <a
           className={cn('text-sm transition', combinedParentClass)}
           target={'_blank'}
@@ -145,7 +315,7 @@ const IconsBundle = ({
           href={href}
         >
           <span className="sr-only">{kind}</span>
-          <SocialSvg className={combinedClass} strokeWidth={strokeWidth}  />
+          <SocialSvg className={combinedClass} strokeWidth={strokeWidth} />
           {text}
         </a>
       </Button>
@@ -161,7 +331,7 @@ const IconsBundle = ({
         href={href}
       >
         <span className="sr-only">{kind}</span>
-        <SocialSvg className={combinedClass} strokeWidth={strokeWidth}/>
+        <SocialSvg className={combinedClass} strokeWidth={strokeWidth} />
         {text}
       </a>
     </>

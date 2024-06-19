@@ -69,8 +69,8 @@ const TOCInline = ({
     : new RegExp('^(' + exclude + ')$', 'i')
 
   const modifiedToc = toc.map((item) => {
-    let parts = item.url.split('-')
-    let lastPart = parts[parts.length - 1]
+    const parts = item.url.split('-')
+    const lastPart = parts[parts.length - 1]
     if (!isNaN(Number(lastPart))) {
       // If the last part is a number, remove it
       parts.pop()

@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { useEffect } from 'react'
 
 export default function Loader() {
@@ -9,5 +9,5 @@ export default function Loader() {
     }
     getLoader()
   }, [])
-  return <l-jelly-triangle color="#AFF5F5"></l-jelly-triangle>
+  return <l-jelly-triangle color="#023D72"></l-jelly-triangle>
 }

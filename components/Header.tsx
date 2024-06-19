@@ -16,6 +16,16 @@ import UserDropdown from '@/components/UserDropdown'
 import { Suspense } from 'react'
 import SiteLogo from '@/components/SiteLogos'
 
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu'
+
 const Header = ({ session }: { session: Session | null }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   // const router = useRouter()
@@ -47,34 +57,35 @@ const Header = ({ session }: { session: Session | null }) => {
           <SiteLogo kind={'logo'} size={10} logoType="link" />
         </div>
         <div className="flex items-center md:space-x-3">
-          <ul className="hidden space-x-2 md:flex">
-            {headerNavLinks.map(
-              (link, i) =>
-                !link.hidden && (
-                  <li key={i}>
-                    <Button
-                      disabled={!!link.disabled}
-                      variant={
-                        (pathname.startsWith(link.href) && link.href !== '/') ||
-                        pathname === link.href
-                          ? 'secondary'
-                          : 'outline'
-                      }
-                      // className={` px-3 py-2 text-sm font-medium ${pathname === link.href ? 'bg-accent text-muted-foreground' : 'text-muted-foreground hover:text-foreground'}`}
-                      className={` border-0 px-3 py-2 text-sm font-medium`}
-                      asChild
-                    >
-                      <Link
-                        // className="rounded px-3 py-2 text-sm font-medium text-muted-foreground transition-all duration-300 hover:bg-secondary hover:brightness-125"
-                        href={link.href}
-                      >
-                        {link.title}
+          <NavigationMenu className="hidden  md:flex">
+            <NavigationMenuList>
+              {headerNavLinks.map(
+                (link, i) =>
+                  !link.hidden && (
+                    <NavigationMenuItem key={link.href}>
+                      <Link href={link.href} key={`link-${link.href}`} legacyBehavior passHref>
+                        <NavigationMenuLink
+                          active={
+                            (pathname.startsWith(link.href) && link.href !== '/') ||
+                            pathname === link.href
+                          }
+                          className={cn(
+                            navigationMenuTriggerStyle(),
+                            (pathname.startsWith(link.href) && link.href !== '/') ||
+                              pathname === link.href
+                              ? 'text-foreground'
+                              : 'text-foreground/60'
+                          )}
+                        >
+                          {link.title}
+                        </NavigationMenuLink>
                       </Link>
-                    </Button>
-                  </li>
-                )
-            )}
-          </ul>
+                    </NavigationMenuItem>
+                  )
+              )}
+            </NavigationMenuList>
+          </NavigationMenu>
+
           <SearchButton />
           <AnalyticsButton />
           <ThemeSwitch />
@@ -94,3 +105,85 @@ const Header = ({ session }: { session: Session | null }) => {
 }
 
 export default Header
+
+// export function NavigationMenuDemo() {
+//   return (
+//     <NavigationMenu>
+//       <NavigationMenuList>
+//         <NavigationMenuItem>
+//           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+//           <NavigationMenuContent>
+//             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+//               <li className="row-span-3">
+//                 <NavigationMenuLink asChild>
+//                   <a
+//                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+//                     href="/"
+//                   >
+//                     <Icons.logo className="h-6 w-6" />
+//                     <div className="mb-2 mt-4 text-lg font-medium">shadcn/ui</div>
+//                     <p className="text-sm leading-tight text-muted-foreground">
+//                       Beautifully designed components that you can copy and paste into your apps.
+//                       Accessible. Customizable. Open Source.
+//                     </p>
+//                   </a>
+//                 </NavigationMenuLink>
+//               </li>
+//               <ListItem href="/docs" title="Introduction">
+//                 Re-usable components built using Radix UI and Tailwind CSS.
+//               </ListItem>
+//               <ListItem href="/docs/installation" title="Installation">
+//                 How to install dependencies and structure your app.
+//               </ListItem>
+//               <ListItem href="/docs/primitives/typography" title="Typography">
+//                 Styles for headings, paragraphs, lists...etc
+//               </ListItem>
+//             </ul>
+//           </NavigationMenuContent>
+//         </NavigationMenuItem>
+//         <NavigationMenuItem>
+//           <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+//           <NavigationMenuContent>
+//             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+//               {components.map((component) => (
+//                 <ListItem key={component.title} title={component.title} href={component.href}>
+//                   {component.description}
+//                 </ListItem>
+//               ))}
+//             </ul>
+//           </NavigationMenuContent>
+//         </NavigationMenuItem>
+//         <NavigationMenuItem>
+//           <Link href="/docs" legacyBehavior passHref>
+//             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+//               Documentation
+//             </NavigationMenuLink>
+//           </Link>
+//         </NavigationMenuItem>
+//       </NavigationMenuList>
+//     </NavigationMenu>
+//   )
+// }
+
+// const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWithoutRef<'a'>>(
+//   ({ className, title, children, ...props }, ref) => {
+//     return (
+//       <li>
+//         <NavigationMenuLink asChild>
+//           <a
+//             ref={ref}
+//             className={cn(
+//               'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+//               className
+//             )}
+//             {...props}
+//           >
+//             <div className="text-sm font-medium leading-none">{title}</div>
+//             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
+//           </a>
+//         </NavigationMenuLink>
+//       </li>
+//     )
+//   }
+// )
+// ListItem.displayName = 'ListItem'

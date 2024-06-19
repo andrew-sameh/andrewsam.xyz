@@ -4,7 +4,7 @@ import { allBlogs } from 'contentlayer/generated'
 import type { Blog } from 'contentlayer/generated'
 
 export async function GET(req: NextRequest, res: NextResponse) {
-  let slug = req.nextUrl.searchParams.get('slug')
+  const slug = req.nextUrl.searchParams.get('slug')
   console.log('slug: ' + slug)
 
   if (!slug) {

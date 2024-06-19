@@ -14,7 +14,6 @@ type SiteLogoProps = {
   href?: string | undefined
   target?: '_blank' | '_self' | '_parent' | '_top'
   variant?: 'link' | 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost'
-
 }
 
 const SiteLogo = ({
@@ -26,25 +25,30 @@ const SiteLogo = ({
   parentClassName,
   buttonClassName,
   target = '_self',
-  variant
+  variant,
 }: SiteLogoProps) => {
   const pxWidth = size ? size * 4 : 0
   const pxHeight = size ? size * 4 : 0
 
   const logoMap = {
-    'logo': "/static/site/logo.svg",
-    'darklogo': "/static/site/logo-d.svg",
-    'tlogolight': "/static/site/logo-tw.svg",
-    'tlogodark': "/static/site/logo-tb.svg",
-    'tlogogrey': "/static/site/logo-tg.svg"
-  };
+    logo: '/static/site/logo.svg',
+    darklogo: '/static/site/logo-d.svg',
+    tlogolight: '/static/site/logo-tw.svg',
+    tlogodark: '/static/site/logo-tb.svg',
+    tlogogrey: '/static/site/logo-tg.svg',
+  }
 
-  const imagePath = logoMap[kind] || "/logo.svg";
+  const imagePath = logoMap[kind] || '/logo.svg'
 
   if (logoType === 'button') {
     return (
       <Button variant={variant} size="icon" className={buttonClassName}>
-        <Link href={href} className={parentClassName} aria-label={siteMetadata.headerTitle} target={target}>
+        <Link
+          href={href}
+          className={parentClassName}
+          aria-label={siteMetadata.headerTitle}
+          target={target}
+        >
           <div className="flex items-center justify-between">
             <Image
               src={imagePath}
@@ -63,7 +67,12 @@ const SiteLogo = ({
 
   if (logoType === 'link' && href) {
     return (
-      <Link href={href} className={parentClassName} aria-label={siteMetadata.headerTitle} target={target}>
+      <Link
+        href={href}
+        className={parentClassName}
+        aria-label={siteMetadata.headerTitle}
+        target={target}
+      >
         <div className="flex items-center justify-between">
           <Image
             src={imagePath}

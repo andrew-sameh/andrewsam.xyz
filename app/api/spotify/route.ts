@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import {SpotifyNowPlayingData} from '@/types/server'
+import { SpotifyNowPlayingData } from '@/types/server'
+import { env } from '@/env.mjs'
+
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
-    let mode = req.nextUrl.searchParams.get('mode')
+    const mode = req.nextUrl.searchParams.get('mode')
 
     if (!mode) {
       return NextResponse.json({ message: 'Missing mode query param' }, { status: 400 })
@@ -10,9 +12,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
     if (mode !== 'now-playing' && mode !== 'top-tracks') {
       return NextResponse.json({ message: 'Invalid mode query param' }, { status: 400 })
     }
-    const client_id = process.env.SPOTIFY_CLIENT_ID || ''
-    const client_secret = process.env.SPOTIFY_CLIENT_SECRET || ''
-    const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN || ''
+    const client_id = env.SPOTIFY_CLIENT_ID || ''
+    const client_secret = env.SPOTIFY_CLIENT_SECRET || ''
+    const refresh_token = env.SPOTIFY_REFRESH_TOKEN || ''
 
     if (!client_id || !client_secret || !refresh_token) {
       return NextResponse.json(
@@ -72,31 +74,26 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
     if (mode === 'now-playing') {
       try {
-        const response = await getNowPlaying();
-        if (
-          response.status === 204 ||
-          response.status > 400 
-        ) {
+        const response = await getNowPlaying()
+        if (response.status === 204 || response.status > 400) {
           return NextResponse.json({ isPlaying: false }, { status: 200 })
-          
         }
-        const responseData = await response.json();        
+        const responseData = await response.json()
         const data = {
           isPlaying: responseData.is_playing,
           title: responseData.item.name,
           album: responseData.item.album.name,
-          artist: responseData.item.album.artists
-            .map((artist) => artist.name)
-            .join(', '),
+          artist: responseData.item.album.artists.map((artist) => artist.name).join(', '),
           albumImageUrl: responseData.item.album.images[0].url,
           songUrl: responseData.item.external_urls.spotify,
-        };
+        }
 
         return NextResponse.json(data, { status: 200 })
       } catch (error) {
-        return NextResponse.json({ message: 'Unable to fetch now playing data',
-        error:error?.toString() 
-      }, { status: 500 })
+        return NextResponse.json(
+          { message: 'Unable to fetch now playing data', error: error?.toString() },
+          { status: 500 }
+        )
       }
     }
 
@@ -109,14 +106,15 @@ export async function GET(req: NextRequest, res: NextResponse) {
         const data = await response.json()
         return NextResponse.json(data, { status: 200 })
       } catch (error) {
-        return NextResponse.json({ message: 'Unable to fetch top tracks data',error:error?.toString() }, { status: 500 })
+        return NextResponse.json(
+          { message: 'Unable to fetch top tracks data', error: error?.toString() },
+          { status: 500 }
+        )
       }
     }
   } catch (error) {
     return NextResponse.json(
-      { message: 'Unable to fetch repo data',
-        error: error?.toString()
-       },
+      { message: 'Unable to fetch repo data', error: error?.toString() },
       { status: 500 }
     )
   }

@@ -5,7 +5,7 @@ import '@/css/twemoji.css'
 // import 'pliny/search/algolia.css'
 import 'remark-github-blockquote-alert/alert.css'
 
-import { Inter as FontSans } from 'next/font/google'
+import { Montserrat as FontSans } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 // import Header from '@/components/Header'
 // import Footer from '@/components/Footer'
@@ -73,7 +73,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html
       lang={siteMetadata.language}
       // className={`scroll-smooth scrollbar-none	`}
-      className={`overflow-x-hidden scroll-smooth scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-400	`}
+      className={`overflow-x-hidden scroll-smooth scrollbar-thin scrollbar-track-slate-400 scrollbar-thumb-slate-700	`}
       suppressHydrationWarning
     >
       <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
@@ -101,8 +101,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 {/* <SearchProvider searchConfig={siteMetadata.search as SearchConfig}> */}
                 {/* <Header session={session} /> */}
                 {/* <main className="mb-auto pt-20"> */}
-                  {children}
-                  {/* </main> */}
+                {children}
+                {/* </main> */}
                 {/* <Footer /> */}
                 {/* </SearchProvider> */}
               </div>

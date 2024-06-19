@@ -4,29 +4,29 @@ import type { TOC } from '@/types/server'
 
 export function ToC({ toc }: { toc: TOC[] }) {
   const modifiedToc = toc.map((item) => {
-    let parts = item.url.split('-');
-    let lastPart = parts[parts.length - 1];
+    const parts = item.url.split('-')
+    const lastPart = parts[parts.length - 1]
     if (!isNaN(Number(lastPart))) {
       // If the last part is a number, remove it
-      parts.pop();
+      parts.pop()
     }
     return {
       ...item,
       url: parts.join('-'),
     }
   })
-  let navRef = useRef<HTMLDivElement>(null)
-  let activeIdRef = useRef(null)
+  const navRef = useRef<HTMLDivElement>(null)
+  const activeIdRef = useRef(null)
 
   useEffect(() => {
-    let observerOptions = {
+    const observerOptions = {
       rootMargin: '-10px 0px 0px 0px',
       threshold: 0,
     }
-    let observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries) => {
       let firstActiveId: string | null = null
       entries.forEach((entry) => {
-        let firstElement = document.querySelector(`#${firstActiveId}`)
+        const firstElement = document.querySelector(`#${firstActiveId}`)
 
         if (entry.intersectionRatio > 0) {
           if (
@@ -41,7 +41,7 @@ export function ToC({ toc }: { toc: TOC[] }) {
 
       if (firstActiveId && activeIdRef.current !== firstActiveId) {
         if (activeIdRef.current && navRef.current) {
-          let previousActiveAnchor = navRef.current.querySelector(
+          const previousActiveAnchor = navRef.current.querySelector(
             `li a[href="#${activeIdRef.current}"]`
           )
           if (previousActiveAnchor) {
@@ -50,7 +50,7 @@ export function ToC({ toc }: { toc: TOC[] }) {
         }
 
         if (navRef.current) {
-          let currentActiveAnchor = navRef.current.querySelector(`li a[href="#${firstActiveId}"]`)
+          const currentActiveAnchor = navRef.current.querySelector(`li a[href="#${firstActiveId}"]`)
           if (currentActiveAnchor) {
             currentActiveAnchor.classList.add('text-gray-600')
           }
@@ -62,7 +62,7 @@ export function ToC({ toc }: { toc: TOC[] }) {
 
     // Track only the headers that are in the ToC
     modifiedToc.forEach((item) => {
-      let header = document.querySelector(item.url)
+      const header = document.querySelector(item.url)
       if (header) {
         observer.observe(header)
       }
@@ -72,15 +72,15 @@ export function ToC({ toc }: { toc: TOC[] }) {
     return () => observer.disconnect()
   }, [modifiedToc])
 
-  let handleLinkClick = (e: MouseEvent, url: string) => {
-    console.log('URL:', url); // Log the URL
+  const handleLinkClick = (e: MouseEvent, url: string) => {
+    console.log('URL:', url) // Log the URL
 
-    let targetElement: HTMLElement | null = document.querySelector(url)
-    console.log('Target Element:', targetElement); // Log the target element
+    const targetElement: HTMLElement | null = document.querySelector(url)
+    console.log('Target Element:', targetElement) // Log the target element
 
     if (targetElement) {
       e.preventDefault()
-      console.log('Offset Top:', targetElement.offsetTop); // Log the offsetTop value
+      console.log('Offset Top:', targetElement.offsetTop) // Log the offsetTop value
 
       window.scrollTo({
         top: targetElement.offsetTop - 80,
@@ -92,9 +92,7 @@ export function ToC({ toc }: { toc: TOC[] }) {
   return (
     <nav ref={navRef} className="top-24 self-start pl-0 md:sticky">
       <ul className="list-none space-y-1.5">
-        {modifiedToc.map((item, index) => 
-        (
-        
+        {modifiedToc.map((item, index) => (
           <li key={index}>
             <a
               href={item.url}

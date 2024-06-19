@@ -87,12 +87,20 @@ export default function ListLayout({
   useEffect(() => {
     posts.forEach((post) => {
       const slug = post.slug
-      if (slug && !(slug in pageViews)) {
+      if (slug) {
         // Assume undefined means loading
-        setPageViews((prevPageViews) => ({
-          ...prevPageViews,
-          [slug]: undefined,
-        }))
+        setPageViews((prevPageViews) => {
+          if (slug in prevPageViews) {
+            // If slug already exists, return previous state
+            return prevPageViews
+          } else {
+            // Otherwise, add new slug with undefined value
+            return {
+              ...prevPageViews,
+              [slug]: undefined,
+            }
+          }
+        })
 
         fetch(`/api/views/blogs?slug=${encodeURIComponent(slug)}`)
           .then((response) => response.json())
@@ -130,7 +138,7 @@ export default function ListLayout({
                 type="text"
                 onChange={(e) => setSearchValue(e.target.value)}
                 placeholder="Search articles"
-                className="block w-full rounded-md border border-muted-foreground bg-secondary px-4 py-2 text-muted-foreground placeholder-muted-foreground focus:border-primary focus:ring-primary dark:border-muted"
+                className="block w-full rounded-md border border-muted-foreground  px-4 py-2 focus:border-primary focus:ring-primary dark:border-muted"
               />
             </label>
             <IconsBundle

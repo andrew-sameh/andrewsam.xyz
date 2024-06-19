@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 
 export default function AnimatedBars() {
   return (
@@ -39,5 +39,5 @@ export default function AnimatedBars() {
         className="h-3 w-1 bg-gray-300 opacity-80 dark:bg-gray-500"
       />
     </div>
-  );
+  )
 }

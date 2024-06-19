@@ -14,8 +14,8 @@ import NextImage from 'next/image'
 import { Skeleton } from '@/components/ui/skeleton'
 import Tag from '@/components/Tag'
 import TOCInline from '@/components/TOCInline'
-import {Button} from '@/components/ui/button'
-import {truncate} from '@/lib/utils'
+import { Button } from '@/components/ui/button'
+import { truncate } from '@/lib/utils'
 // import TOCInline from 'pliny/ui/TOCInline'
 import Image from '@/components/Image'
 import { HeartButton } from '@/components/LikeButton'
@@ -187,7 +187,7 @@ export default function PostLayout({
                           className="text-primary hover:brightness-125 dark:hover:brightness-125"
                           aria-label={`Previous post: ${prev.title}`}
                         >
-                          &larr; {truncate(prev.title,30)}
+                          &larr; {truncate(prev.title, 30)}
                         </Link>
                       </Button>
                     </div>
@@ -200,7 +200,7 @@ export default function PostLayout({
                           className="text-primary hover:brightness-125 dark:hover:brightness-125"
                           aria-label={`Next post: ${next.title}`}
                         >
-                          {truncate(next.title,30)} &rarr;
+                          {truncate(next.title, 30)} &rarr;
                         </Link>
                       </Button>
                     </div>

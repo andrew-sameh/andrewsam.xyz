@@ -9,8 +9,8 @@ import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-import {Button} from '@/components/ui/button'
-import {truncate} from '@/lib/utils'
+import { Button } from '@/components/ui/button'
+import { truncate } from '@/lib/utils'
 interface LayoutProps {
   content: CoreContent<Blog>
   children: ReactNode
@@ -46,36 +46,36 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
               <Comments slug={slug} />
             </div>
           )}
-              <footer>
-                <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">
-                  {prev && prev.path && (
-                    <div className="pt-4 xl:pt-8">
-                      <Button asChild>
-                        <Link
-                          href={`/${prev.path}`}
-                          className="text-primary hover:brightness-125 dark:hover:brightness-125"
-                          aria-label={`Previous post: ${prev.title}`}
-                        >
-                          &larr; {truncate(prev.title,30)}
-                        </Link>
-                      </Button>
-                    </div>
-                  )}
-                  {next && next.path && (
-                    <div className="pt-4 xl:pt-8">
-                      <Button asChild>
-                        <Link
-                          href={`/${next.path}`}
-                          className="text-primary hover:brightness-125 dark:hover:brightness-125"
-                          aria-label={`Next post: ${next.title}`}
-                        >
-                          {truncate(next.title,30)} &rarr;
-                        </Link>
-                      </Button>
-                    </div>
-                  )}
+          <footer>
+            <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">
+              {prev && prev.path && (
+                <div className="pt-4 xl:pt-8">
+                  <Button asChild>
+                    <Link
+                      href={`/${prev.path}`}
+                      className="text-primary hover:brightness-125 dark:hover:brightness-125"
+                      aria-label={`Previous post: ${prev.title}`}
+                    >
+                      &larr; {truncate(prev.title, 30)}
+                    </Link>
+                  </Button>
                 </div>
-              </footer>
+              )}
+              {next && next.path && (
+                <div className="pt-4 xl:pt-8">
+                  <Button asChild>
+                    <Link
+                      href={`/${next.path}`}
+                      className="text-primary hover:brightness-125 dark:hover:brightness-125"
+                      aria-label={`Next post: ${next.title}`}
+                    >
+                      {truncate(next.title, 30)} &rarr;
+                    </Link>
+                  </Button>
+                </div>
+              )}
+            </div>
+          </footer>
         </div>
       </article>
     </SectionContainer>

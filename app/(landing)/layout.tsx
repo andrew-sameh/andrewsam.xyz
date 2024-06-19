@@ -10,11 +10,9 @@ export default async function RootPublicLayout({ children }: { children: React.R
   return (
     <>
       <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-      <Header session={session} />
-      <main className="mb-auto pt-20">
-        {children}
-        </main>
-      <Footer />
+        <Header session={session} />
+        <main className="mb-auto pt-20">{children}</main>
+        <Footer />
       </SearchProvider>
     </>
   )
