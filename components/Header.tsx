@@ -62,22 +62,25 @@ const Header = ({ session }: { session: Session | null }) => {
               {headerNavLinks.map(
                 (link, i) =>
                   !link.hidden && (
-                      <NavigationMenuItem key={link.href}>
-                        <Link href={link.href} key={`link-${link.href}`} legacyBehavior passHref >
-                          <NavigationMenuLink
-                          active={(pathname.startsWith(link.href) && link.href !== '/') || pathname === link.href}
-                            className={cn(
-                              navigationMenuTriggerStyle(),
-                              (pathname.startsWith(link.href) && link.href !== '/') ||
-                                pathname === link.href
-                                ? 'text-foreground'
-                                : 'text-foreground/60'
-                            )}
-                          >
-                            {link.title}
-                          </NavigationMenuLink>
-                        </Link>
-                      </NavigationMenuItem>
+                    <NavigationMenuItem key={link.href}>
+                      <Link href={link.href} key={`link-${link.href}`} legacyBehavior passHref>
+                        <NavigationMenuLink
+                          active={
+                            (pathname.startsWith(link.href) && link.href !== '/') ||
+                            pathname === link.href
+                          }
+                          className={cn(
+                            navigationMenuTriggerStyle(),
+                            (pathname.startsWith(link.href) && link.href !== '/') ||
+                              pathname === link.href
+                              ? 'text-foreground'
+                              : 'text-foreground/60'
+                          )}
+                        >
+                          {link.title}
+                        </NavigationMenuLink>
+                      </Link>
+                    </NavigationMenuItem>
                   )
               )}
             </NavigationMenuList>

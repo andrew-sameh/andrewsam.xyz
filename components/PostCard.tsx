@@ -1,14 +1,14 @@
-'use client';
+'use client'
 
-import Tag from '@/components/Tag';
-import { CoreContent } from 'pliny/utils/contentlayer';
-import type { Blog } from 'contentlayer/generated';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import Tag from '@/components/Tag'
+import { CoreContent } from 'pliny/utils/contentlayer'
+import type { Blog } from 'contentlayer/generated'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 export interface PostCardProps {
-  posts: CoreContent<Blog>[];
-  showTags?: boolean;
+  posts: CoreContent<Blog>[]
+  showTags?: boolean
 }
 
 export default function PostCard({ posts, showTags = true }: PostCardProps) {
@@ -27,7 +27,7 @@ export default function PostCard({ posts, showTags = true }: PostCardProps) {
               <div className="space-y-3 xl:col-span-4">
                 <span className="text-2xl font-bold leading-8 tracking-tight">
                   <Link href={`/blog/${slug}`}>
-                    <span className="text-primary-500 duration-300 hover:text-primary-400">
+                    <span className="hover:text-primary-400 text-primary-500 duration-300">
                       {title}
                     </span>
                   </Link>
@@ -46,5 +46,5 @@ export default function PostCard({ posts, showTags = true }: PostCardProps) {
         </motion.li>
       ))}
     </ul>
-  );
+  )
 }

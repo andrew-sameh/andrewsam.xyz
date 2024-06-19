@@ -19,8 +19,8 @@ function createTypedInstance(el: HTMLElement) {
 }
 
 export default function Hero() {
-  let el = useRef(null)
-  let typed = useRef<Typed | null>(null)
+  const el = useRef(null)
+  const typed = useRef<Typed | null>(null)
 
   useEffect(() => {
     if (el.current) {
@@ -34,7 +34,7 @@ export default function Hero() {
 
   return (
     <div className="container mx-auto -mt-16 flex h-screen flex-col content-center justify-center px-4 py-5 text-center">
-        <ModelViewer />
+      <ModelViewer />
       <div>
         <ul id="bios" className="hidden">
           <li>Hi it's Andrew!</li>
@@ -45,10 +45,11 @@ export default function Hero() {
         />
       </div>
       <p className="mx-auto mt-3 max-w-lg text-gray-500 dark:text-gray-400 md:text-xl lg:text-lg xl:text-xl">
-      Welcome to my over-engineered personal blog where I write about software engineering, productivity, and other stupid stuff.
+        Welcome to my over-engineered personal blog where I write about software engineering,
+        productivity, and other stupid stuff.
       </p>
       <p className="mx-auto max-w-lg text-gray-500 dark:text-gray-400 md:text-xl lg:text-lg xl:text-xl">
-      Also, it's my portfolio.
+        Also, it's my portfolio.
       </p>
 
       <IconsBundle

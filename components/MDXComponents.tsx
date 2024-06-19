@@ -27,7 +27,5 @@ export const components: MDXComponents = {
   StaticTweet,
   Box,
   YouTube,
-  FullWidthSection
+  FullWidthSection,
 }
-
-

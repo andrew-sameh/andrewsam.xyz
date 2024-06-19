@@ -42,7 +42,7 @@ export default function UserDropdown({ session }: { session: Session }) {
             <Button
               asChild
               variant={'outline'}
-              className="relative flex border-0 w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 my-1"
+              className="relative my-1 flex w-full items-center justify-start space-x-2 rounded-md border-0 p-2 text-left text-sm transition-all duration-75"
             >
               <Link href="/" className="flex w-full space-x-2">
                 <LuPlaneLanding className="h-4 w-4" />
@@ -52,7 +52,7 @@ export default function UserDropdown({ session }: { session: Session }) {
             <Button
               asChild
               variant={'outline'}
-              className="relative flex border-0 w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 my-1"
+              className="relative my-1 flex w-full items-center justify-start space-x-2 rounded-md border-0 p-2 text-left text-sm transition-all duration-75"
             >
               <Link href="/ai" className="flex w-full space-x-2 ">
                 <MdOutlineRocketLaunch className="h-4 w-4" />
@@ -61,7 +61,7 @@ export default function UserDropdown({ session }: { session: Session }) {
             </Button>
             <Button
               variant={'outline'}
-              className="relative flex border-0 w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 my-1"
+              className="relative my-1 flex w-full items-center justify-start space-x-2 rounded-md border-0 p-2 text-left text-sm transition-all duration-75"
               onClick={() => signOut()}
             >
               <LogOut className="h-4 w-4" />

@@ -87,7 +87,7 @@ import {
   Mistral,
   Opensource,
   VLLM,
-  Locust
+  Locust,
 } from './icons'
 
 import Image from 'next/image'
@@ -191,13 +191,13 @@ const components = {
   sanity: Sanity,
   sveltekit: SvelteKit,
   numpy: Numpy,
-  matplotlib:Matplotlib,
+  matplotlib: Matplotlib,
   jupyter: Jupyter,
   scikitlearn: SciKitLearn,
   grafana: Grafana,
-  gradio:Gradio,
+  gradio: Gradio,
   celery: Celery,
-  testrail:TestRail,
+  testrail: TestRail,
   langchain: LangChain,
   seaborn: Seaborn,
   powerbi: PowerBi,
@@ -217,9 +217,7 @@ const components = {
   mistral: Mistral,
   opensource: Opensource,
   locust: Locust,
-  vllm: VLLM
-
-
+  vllm: VLLM,
 }
 
 type IconsBundleProps = {

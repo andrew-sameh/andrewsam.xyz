@@ -187,7 +187,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                   Sign In
                 </button>
                 <Link href="/auth/register" className="col-span-1">
-                  <button className={cn(buttonVariants()," w-full")}>Register</button>
+                  <button className={cn(buttonVariants(), ' w-full')}>Register</button>
                 </Link>
               </div>
             </div>

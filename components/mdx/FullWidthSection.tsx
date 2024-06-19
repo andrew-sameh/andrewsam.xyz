@@ -10,7 +10,13 @@ interface Props {
   color?: string
 }
 
-export default function FullWidthSection({ children, size = 'sm', className, length = 40, color= 'secondary' }: Props) {
+export default function FullWidthSection({
+  children,
+  size = 'sm',
+  className,
+  length = 40,
+  color = 'secondary',
+}: Props) {
   let classNameN
 
   switch (size) {

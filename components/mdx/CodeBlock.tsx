@@ -6,7 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import createElement from 'react-syntax-highlighter/dist/cjs/create-element'
 
 import CopyButton from './CopyButton'
-import { env } from "@/env.mjs";
+import { env } from '@/env.mjs'
 interface LineProps {
   lineNumber: number
   children: React.ReactNode
@@ -200,9 +200,10 @@ const CodeBlock: FC<CodeBlockProps> = ({
   )
 }
 
-const baseUrl = (env.NEXT_PUBLIC_APP_URL && env.NEXT_PUBLIC_APP_URL.includes('localhost'))
-  ? `/static/code_examples/`
-  : '/static/code/'
+const baseUrl =
+  env.NEXT_PUBLIC_APP_URL && env.NEXT_PUBLIC_APP_URL.includes('localhost')
+    ? `/static/code_examples/`
+    : '/static/code/'
 const fetchData = async (src: string): Promise<string> => {
   try {
     const response = await fetch(`${baseUrl}${src}.txt`)

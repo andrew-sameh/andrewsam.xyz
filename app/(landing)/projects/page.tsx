@@ -1,4 +1,4 @@
-import {projectsData} from '@/data/mainData'
+import { projectsData } from '@/data/mainData'
 import { ProjectCard } from '@/components/ProjectCard'
 import { genPageMetadata } from 'app/seo'
 import SectionContainer from '@/components/SectionContainer'
@@ -8,8 +8,8 @@ export const metadata = genPageMetadata({ title: 'Projects' })
 export default async function Projects() {
   const delay = (ms: number) => new Promise((res) => setTimeout(res, ms))
   // await delay(10000)
-  let workProjects = projectsData.filter(({ type }) => type === 'work')
-  let sideProjects = projectsData.filter(({ type }) => type === 'self')
+  const workProjects = projectsData.filter(({ type }) => type === 'work')
+  const sideProjects = projectsData.filter(({ type }) => type === 'self')
   return (
     <>
       <SectionContainer>

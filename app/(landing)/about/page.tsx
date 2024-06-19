@@ -13,11 +13,11 @@ export default function Page() {
 
   return (
     <>
-        <SectionContainer>
-          <AuthorLayout content={mainContent}>
-            <MDXLayoutRenderer code={author.body.code} />
-          </AuthorLayout>
-        </SectionContainer>
+      <SectionContainer>
+        <AuthorLayout content={mainContent}>
+          <MDXLayoutRenderer code={author.body.code} />
+        </AuthorLayout>
+      </SectionContainer>
     </>
   )
 }

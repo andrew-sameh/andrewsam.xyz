@@ -17,7 +17,7 @@ const jsonResponse = (data: object, status: number) =>
   })
 
 export async function GET(req: NextRequest, res: NextResponse) {
-  let slug = req.nextUrl.searchParams.get('slug')
+  const slug = req.nextUrl.searchParams.get('slug')
   if (!slug) {
     return jsonResponse({ error: 'Slug is required' }, 400)
   }
@@ -31,26 +31,26 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
     if (!blog) {
       return jsonResponse({ error: 'Blog not found' }, 404)
-
     }
 
     const guestUser = await db.guestUser.findUnique({
       where: {
-       ip,
+        ip,
       },
     })
 
-    const blogLike = guestUser ? await db.blogLike.findFirst({
-      where: {
-        blogId: blog.id,
-        guestId: guestUser.id,
-      },
-    }) : null
+    const blogLike = guestUser
+      ? await db.blogLike.findFirst({
+          where: {
+            blogId: blog.id,
+            guestId: guestUser.id,
+          },
+        })
+      : null
 
     const userLikes = blogLike?.count ?? 0
 
     return jsonResponse({ slug, likes: blog.likes, userLikes }, 200)
-
   } catch (error) {
     console.error('error:', error)
     return jsonResponse({ error: 'Internal server error' }, 500)

@@ -1,16 +1,16 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
-import { LuMoon as Moon, LuSun as Sun } from "react-icons/lu";
+import { motion } from 'framer-motion'
+import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
+import { LuMoon as Moon, LuSun as Sun } from 'react-icons/lu'
 
 const ThemeSwitch = () => {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme, resolvedTheme } = useTheme()
 
   // When mounted on client, now we can show the UI
-  useEffect(() => setMounted(true), []);
+  useEffect(() => setMounted(true), [])
 
   return (
     <motion.button
@@ -32,14 +32,14 @@ const ThemeSwitch = () => {
         fill="currentColor"
         className="text-gray-900 dark:text-gray-100"
       > */}
-        {mounted && (theme === 'dark' || resolvedTheme === 'dark') ? (
-          <Sun className="h-5 w-5" />
-        ) : (
-          <Moon className="h-5 w-5" />
-        )}
+      {mounted && (theme === 'dark' || resolvedTheme === 'dark') ? (
+        <Sun className="h-5 w-5" />
+      ) : (
+        <Moon className="h-5 w-5" />
+      )}
       {/* </svg> */}
     </motion.button>
-  );
-};
+  )
+}
 
-export default ThemeSwitch;
+export default ThemeSwitch

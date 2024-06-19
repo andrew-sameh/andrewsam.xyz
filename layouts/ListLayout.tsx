@@ -87,12 +87,20 @@ export default function ListLayout({
   useEffect(() => {
     posts.forEach((post) => {
       const slug = post.slug
-      if (slug && !(slug in pageViews)) {
+      if (slug) {
         // Assume undefined means loading
-        setPageViews((prevPageViews) => ({
-          ...prevPageViews,
-          [slug]: undefined,
-        }))
+        setPageViews((prevPageViews) => {
+          if (slug in prevPageViews) {
+            // If slug already exists, return previous state
+            return prevPageViews
+          } else {
+            // Otherwise, add new slug with undefined value
+            return {
+              ...prevPageViews,
+              [slug]: undefined,
+            }
+          }
+        })
 
         fetch(`/api/views/blogs?slug=${encodeURIComponent(slug)}`)
           .then((response) => response.json())

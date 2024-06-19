@@ -11,7 +11,10 @@ const SearchButton = () => {
       siteMetadata.search.provider === 'algolia' ? AlgoliaButton : KBarButton
 
     return (
-      <SearchButtonWrapper aria-label="Search" className='ml-1 mr-1 h-8 w-8 rounded p-1 hover:scale-[1.2] transition duration-200 ease-in-out'>
+      <SearchButtonWrapper
+        aria-label="Search"
+        className="ml-1 mr-1 h-8 w-8 rounded p-1 transition duration-200 ease-in-out hover:scale-[1.2]"
+      >
         {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -26,7 +29,7 @@ const SearchButton = () => {
             d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
           />
         </svg> */}
-        <IconsBundle kind='search' iconType='icon' size={5} strokeWidth={2} />
+        <IconsBundle kind="search" iconType="icon" size={5} strokeWidth={2} />
       </SearchButtonWrapper>
     )
   }

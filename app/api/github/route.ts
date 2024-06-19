@@ -17,15 +17,18 @@ export async function GET(req: NextRequest, res: NextResponse) {
   }
   let owner = siteMetadata?.github
   if (!owner) {
-    return NextResponse.json({ message: 'Missing github username in siteMetadata' }, { status: 400 })
+    return NextResponse.json(
+      { message: 'Missing github username in siteMetadata' },
+      { status: 400 }
+    )
   }
-  let parts = owner.split('/')
-  owner = parts.pop() ?? "andrew-sameh"
+  const parts = owner.split('/')
+  owner = parts.pop() ?? 'andrew-sameh'
   if (repo.includes('/')) {
     ;[owner, repo] = repo.split('/')
   }
   try {
-    let { repository }: GraphQlQueryResponseData = await graphql(
+    const { repository }: GraphQlQueryResponseData = await graphql(
       `
         query repository($owner: String!, $repo: String!) {
           repository(owner: $owner, name: $repo) {

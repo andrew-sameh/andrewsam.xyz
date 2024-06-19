@@ -42,7 +42,7 @@ async function fetchNowPlaying(): Promise<NowPlayingSong | null> {
 
 export default function NowPlaying() {
   // const nowPlaying = await fetchNowPlaying();
-  let { data } = useSWR<SpotifyNowPlayingData>(`/api/spotify?mode=now-playing`, swrFetcher)
+  const { data } = useSWR<SpotifyNowPlayingData>(`/api/spotify?mode=now-playing`, swrFetcher)
 
   const nowPlaying = data
 
@@ -66,7 +66,7 @@ export default function NowPlaying() {
 
   return (
     <div className="mt-4 flex items-center justify-center space-x-2 sm:flex-row sm:justify-start sm:space-x-2">
-        {/* <NextImage
+      {/* <NextImage
           src={nowPlaying.albumImageUrl || ''}
           // src="https://i.scdn.co/image/ab67616d0000b2731a84d71391df7469c5ab8539"
           alt={`Album cover of ${nowPlaying.album}`}

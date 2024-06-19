@@ -1,7 +1,6 @@
-'use client';
-import GitHubCalendar from 'react-github-calendar';
-import { useTheme } from 'next-themes';
-
+'use client'
+import GitHubCalendar from 'react-github-calendar'
+import { useTheme } from 'next-themes'
 
 export function GithubCal() {
   const { theme } = useTheme()

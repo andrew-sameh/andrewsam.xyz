@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="mb-0 flex flex-col justify-start space-x-0 space-y-3 py-10">
           <div className="flex flex-col items-center space-y-3 text-sm sm:flex-row sm:justify-between sm:text-base">
             {/* <Suspense fallback="loading..."> */}
-              <NowPlaying />
+            <NowPlaying />
             {/* </Suspense> */}
             <ul className="flex cursor-pointer items-center space-x-5">
               <li>
@@ -80,12 +80,7 @@ export default function Footer() {
                 />
               </li>
               <li>
-                <IconsBundle
-                  kind="shadcn"
-                  href={`https://ui.shadcn.com/`}
-                  size={5}
-                  hover={false}
-                />
+                <IconsBundle kind="shadcn" href={`https://ui.shadcn.com/`} size={5} hover={false} />
               </li>
               <li>
                 <IconsBundle
@@ -96,20 +91,10 @@ export default function Footer() {
                 />
               </li>
               <li>
-                <IconsBundle
-                  kind="prisma"
-                  href={`https://www.prisma.io/`}
-                  size={5}
-                  hover={false}
-                />
+                <IconsBundle kind="prisma" href={`https://www.prisma.io/`} size={5} hover={false} />
               </li>
               <li>
-                <IconsBundle
-                  kind="umami"
-                  href={`https://umami.is/`}
-                  size={5}
-                  hover={false}
-                />
+                <IconsBundle kind="umami" href={`https://umami.is/`} size={5} hover={false} />
               </li>
               {/* <li>
               <IconsBundle kind="markdown" href={`mailto:${"siteMetadata.linkedin"}`} size={5}  hover={false}/>
