@@ -3,7 +3,7 @@ import { Resend } from 'resend'
 import { render } from '@react-email/render'
 import { env } from '@/env.mjs'
 
-const resend = new Resend(env.RESEND_API_KEY)
+const resend = new Resend(env.RESEND_TOKEN)
 
 export async function POST() {
   try {
