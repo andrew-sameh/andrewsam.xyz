@@ -24,6 +24,12 @@ export interface Company {
   items: Experience[]
 
 }
+
+export interface TechStackType {
+  name: string
+  href?: string
+
+}
 export interface Experience {
   title: string
   roleType: 'Fulltime' | 'Part-time' | 'Consultant' | 'Freelance'
@@ -31,7 +37,7 @@ export interface Experience {
   endDate?: string
   description: string
   active?: boolean
-  techStack?: string[]
+  techStack?: TechStackType[]
   hidden?: boolean
 }
 
@@ -103,7 +109,23 @@ export let experienceData: Company[] =
         roleType: 'Fulltime',
         startDate: '2024/04/15',
         description: 'Building the first Hydrogen-driven website builder powered by AI. Weaverse is a Shopify sales channel that allows you to create a website in minutes with no coding required.',
-        techStack: ['react', 'prisma', 'tailwind', 'openai'],
+        techStack: [{
+          name: 'prisma',
+          href: 'https://prisma.io',
+        },
+        {
+          name: 'react',
+          href: 'https://reactjs.org',
+        },
+        {
+          name: 'tailwind',
+          href: 'https://tailwindcss.com',
+        },
+        {
+          name: 'openai',
+          href: 'https://openai.com',
+        }],
+      
         active: true,
       },
       {
@@ -112,8 +134,22 @@ export let experienceData: Company[] =
         startDate: '2023/10/15',
         endDate: '2024/04/15',
         description: 'Building the first Hydrogen-driven website builder powered by AI. Weaverse is a Shopify sales channel that allows you to create a website in minutes with no coding required.',
-        techStack: ['react', 'prisma', 'tailwind', 'openai'],
-
+        techStack: [{
+          name: 'prisma',
+          href: 'https://prisma.io',
+        },
+        {
+          name: 'react',
+          href: 'https://reactjs.org',
+        },
+        {
+          name: 'tailwind',
+          href: 'https://tailwindcss.com',
+        },
+        {
+          name: 'openai',
+          href: 'https://openai.com',
+        }],
       },
       {
         title: 'API Implementation Engineer - InnQuest',
@@ -121,8 +157,22 @@ export let experienceData: Company[] =
         startDate: '2022/10/24',
         endDate: '2023/10/15',
         description: 'Building the first Hydrogen-driven website builder powered by AI. Weaverse is a Shopify sales channel that allows you to create a website in minutes with no coding required.',
-        techStack: ['react', 'prisma', 'tailwind', 'openai'],
-
+        techStack: [{
+          name: 'prisma',
+          href: 'https://prisma.io',
+        },
+        {
+          name: 'react',
+          href: 'https://reactjs.org',
+        },
+        {
+          name: 'tailwind',
+          href: 'https://tailwindcss.com',
+        },
+        {
+          name: 'openai',
+          href: 'https://openai.com',
+        }],
       },
     ],
   },
@@ -139,8 +189,22 @@ export let experienceData: Company[] =
         roleType: 'Consultant',
         startDate: '2023/02/14',
         description: 'Building the first Hydrogen-driven website builder powered by AI. Weaverse is a Shopify sales channel that allows you to create a website in minutes with no coding required.',
-        techStack: ['swagger', 'fastapi', 'sveltekit', 'openai'],
-        active: true,
+        techStack: [{
+          name: 'prisma',
+          href: 'https://prisma.io',
+        },
+        {
+          name: 'react',
+          href: 'https://reactjs.org',
+        },
+        {
+          name: 'tailwind',
+          href: 'https://tailwindcss.com',
+        },
+        {
+          name: 'openai',
+          href: 'https://openai.com',
+        }],        active: true,
 
       },
     ],

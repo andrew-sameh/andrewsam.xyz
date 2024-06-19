@@ -7,7 +7,7 @@ import { LuChevronLeft } from 'react-icons/lu'
 
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
-// import { Icons } from "@/components/shared/icons-bundle";
+import SiteLogo from "@/components/SiteLogos";
 import { RegForm } from '@/components/auth/user-reg-form'
 // export const metadata: Metadata = {
 //   title: "Login",
@@ -20,13 +20,8 @@ export default function CredentialsRegisterPage() {
       <div className="mx-auto my-auto flex w-full flex-col justify-center space-y-6 px-2 sm:w-[350px]">
         <div className="flex flex-col content-center justify-center space-y-2 text-center">
           {/* <Logo className="mx-auto h-6 w-6" /> */}
-          <Image
-            src="/logo.png"
-            alt="Andrew Sam"
-            width="50"
-            height="50"
-            className="mx-auto rounded-sm"
-          ></Image>
+          <SiteLogo kind="logo" logoType="image" className="mx-auto h-12 w-12" />
+
 
           <h1 className="text-2xl font-semibold tracking-tight">Create an account</h1>
           {/* <p className="text-sm">

@@ -268,7 +268,7 @@ const IconsBundle = ({
 
   const combinedParentClass = cn(
     'flex items-center justify-center',
-    `${hover ? 'hover:text-blue-500 dark:hover:text-blue-400' : ''}`,
+    `${hover ? 'hover:text-sky-900 dark:hover:text-sky-900' : ''}`,
     parentClassName
   )
 

@@ -2030,10 +2030,10 @@
    gradientTransform="matrix(379.99999,-75.999998,75.999998,379.99999,318.6697,581.25123)"
    spreadMethod="pad"
    id="radialGradient2"><stop
-     style="stop-opacity:1;stop-color:#ffffff"
+     style="stopOpacity:1;stop-color:#ffffff"
      offset="0"
      id="stop1" /><stop
-     style="stop-opacity:1;stop-color:#f0f0f0"
+     style="stopOpacity:1;stop-color:#f0f0f0"
      offset="1"
      id="stop2" /></radialGradient><clipPath
    clipPathUnits="userSpaceOnUse"

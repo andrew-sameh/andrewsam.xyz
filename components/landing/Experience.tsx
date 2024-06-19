@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { skillsData } from '@/data/mainData'
 import IconsBundle from '../social-icons'
-import { experienceData,type Experience } from '@/data/mainData'
+import { experienceData,type Experience, type TechStackType } from '@/data/mainData'
 import {
   Timeline,
   TimelineItemDescription,
@@ -16,12 +16,12 @@ import {
   type TimelinePropsItem,
 } from '@/components/ui/timeline'
 
-function TechnologyIcons({ technologies }: { technologies: string[] }) {
+function TechnologyIcons({ technologies }: { technologies: TechStackType[] }) {
     return (
       <div className="flex flex-wrap items-center space-x-2 pt-1 text-xs">
         <span className="mr-2">Technologies used:</span>
         {technologies.map((tech, index) => (
-          <IconsBundle key={index} kind={tech} size={4} iconType="link" href={`https://www.${tech}.com`} />
+          <IconsBundle key={index} kind={tech.name} size={4} iconType="link" href={tech.href} />
         ))}
       </div>
     );

@@ -35,7 +35,7 @@ export const env = createEnv({
     NEXT_UMAMI_ID: z.string().optional(),
     NEXT_PUBLIC_GISCUS_REPO: z.string().optional(),
     NEXT_PUBLIC_GISCUS_REPOSITORY_ID: z.string().optional(),
-    NEXT_PUBLIC_GISCUS_CATEGORY_ID: z.string().optional(),
+    NEXT_PUBLIC_GISCUS_CATEGORY: z.string().optional(),
     NEXT_PUBLIC_GISCUS_CATEGORY_ID: z.string().optional(),
   },
   runtimeEnv: {
@@ -67,7 +67,7 @@ export const env = createEnv({
     NEXT_UMAMI_ID: process.env.NEXT_UMAMI_ID,
     NEXT_PUBLIC_GISCUS_REPO: process.env.NEXT_PUBLIC_GISCUS_REPO,
     NEXT_PUBLIC_GISCUS_REPOSITORY_ID: process.env.NEXT_PUBLIC_GISCUS_REPOSITORY_ID,
-    NEXT_PUBLIC_GISCUS_CATEGORY_ID: process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
+    NEXT_PUBLIC_GISCUS_CATEGORY: process.env.NEXT_PUBLIC_GISCUS_CATEGORY,
     NEXT_PUBLIC_GISCUS_CATEGORY_ID: process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
 
   }, // Add a comma here

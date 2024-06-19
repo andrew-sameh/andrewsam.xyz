@@ -130,7 +130,7 @@ export default function ListLayout({
                 type="text"
                 onChange={(e) => setSearchValue(e.target.value)}
                 placeholder="Search articles"
-                className="block w-full rounded-md border border-muted-foreground bg-secondary px-4 py-2 text-muted-foreground placeholder-muted-foreground focus:border-primary focus:ring-primary dark:border-muted"
+                className="block w-full rounded-md border border-muted-foreground  px-4 py-2 focus:border-primary focus:ring-primary dark:border-muted"
               />
             </label>
             <IconsBundle

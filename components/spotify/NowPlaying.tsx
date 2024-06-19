@@ -1,7 +1,7 @@
 'use client'
 import { getNowPlaying } from '@/lib/spotify'
 import useSWR from 'swr'
-import { fetcher } from '@/lib/utils'
+import { swrFetcher } from '@/lib/utils'
 import AnimatedBars from './AnimatedBars'
 import { Artist, NowPlayingSong } from './types'
 import { SpotifyNowPlayingData } from '@/types/server'
@@ -40,9 +40,9 @@ async function fetchNowPlaying(): Promise<NowPlayingSong | null> {
   return null
 }
 
-export default async function NowPlaying() {
+export default function NowPlaying() {
   // const nowPlaying = await fetchNowPlaying();
-  let { data } = useSWR<SpotifyNowPlayingData>(`/api/spotify?mode=now-playing`, fetcher)
+  let { data } = useSWR<SpotifyNowPlayingData>(`/api/spotify?mode=now-playing`, swrFetcher)
 
   const nowPlaying = data
 

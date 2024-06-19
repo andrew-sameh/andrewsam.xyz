@@ -7,7 +7,7 @@ export const metadata = genPageMetadata({ title: 'Projects' })
 
 export default async function Projects() {
   const delay = (ms: number) => new Promise((res) => setTimeout(res, ms))
-  await delay(10000)
+  // await delay(10000)
   let workProjects = projectsData.filter(({ type }) => type === 'work')
   let sideProjects = projectsData.filter(({ type }) => type === 'self')
   return (
