@@ -21,7 +21,13 @@ function TechnologyIcons({ technologies }: { technologies: TechStackType[] }) {
     <div className="flex flex-wrap items-center space-x-2 pt-1 text-xs">
       <span className="mr-2">Technologies used:</span>
       {technologies.map((tech, index) => (
-        <IconsBundle key={index} kind={tech.name} size={4} iconType="link" href={tech.href} />
+        <IconsBundle
+          key={index}
+          kind={tech.name.toLowerCase()}
+          size={4}
+          iconType="link"
+          href={tech.href}
+        />
       ))}
     </div>
   )

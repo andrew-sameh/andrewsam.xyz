@@ -92,9 +92,9 @@ export function Technologies() {
                 <Card key={category} className="w-full">
                   <CardHeader>
                     <CardTitle>{category}</CardTitle>
-                    <CardDescription>
+                    {/* <CardDescription>
                       Here are some of the technologies I've worked with
-                    </CardDescription>
+                    </CardDescription> */}
                   </CardHeader>
                   <CardContent>
                     <div className="grid grid-cols-5 gap-4 md:grid-cols-8 lg:grid-cols-8 xl:grid-cols-10">
