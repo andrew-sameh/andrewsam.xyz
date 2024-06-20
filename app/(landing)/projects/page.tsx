@@ -35,7 +35,7 @@ export default async function Projects() {
               Projects
             </h1>
             <p className="text-base text-gray-500 dark:text-gray-400 md:text-lg md:leading-7">
-              Showcase your projects
+              Some of my projects
             </p>
           </div>
           <div className="container py-12">

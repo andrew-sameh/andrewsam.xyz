@@ -88,6 +88,7 @@ import {
   Opensource,
   VLLM,
   Locust,
+  Fiber,
 } from './icons'
 
 import Image from 'next/image'
@@ -218,6 +219,7 @@ const components = {
   opensource: Opensource,
   locust: Locust,
   vllm: VLLM,
+  fiber: Fiber,
 }
 
 type IconsBundleProps = {
@@ -251,6 +253,10 @@ const IconsBundle = ({
 
   // check if kind already exists in the components object
   if (kind in components === false) {
+    return null
+  }
+
+  if ((iconType === 'link' || iconType === 'Link' || iconType === 'LinkButton') && !href) {
     return null
   }
 

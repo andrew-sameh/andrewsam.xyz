@@ -13,7 +13,11 @@ export function GithubCal() {
         A cool chart
       </h3>
       <div className="mt-5 flex items-center justify-center">
-        <GitHubCalendar colorScheme={colorScheme} username="andrew-sameh" />
+        <GitHubCalendar
+          colorScheme={colorScheme}
+          username="andrew-sameh"
+          showWeekdayLabels={true}
+        />
       </div>
     </div>
   )

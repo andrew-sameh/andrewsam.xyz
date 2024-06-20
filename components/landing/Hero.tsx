@@ -34,6 +34,7 @@ export default function Hero() {
 
   return (
     <div className="container mx-auto -mt-16 flex h-screen flex-col content-center justify-center px-4 py-5 text-center">
+      <h1 className="sr-only">{siteMetadata.title}</h1>
       <ModelViewer />
       <div>
         <ul id="bios" className="hidden">

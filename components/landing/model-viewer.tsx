@@ -24,7 +24,7 @@ export const Model: React.FC = () => {
 
   const { scene, animations } = useGLTF('/spheron.glb')
   const { actions } = useAnimations(animations, mesh)
-  const color = '#1E8FED'
+  const color = '#89cff0'
   useFrame(() => {
     mesh.current.rotation.y += 0.01
     mesh.current.rotation.x += 0.02
@@ -85,7 +85,7 @@ export const ModelViewer: React.FC = () => {
         <Suspense fallback={null}>
           <Model />
         </Suspense>
-        <Environment preset="warehouse" />
+        <Environment preset="studio" />
         {/* <OrbitControls enableZoom={true} /> */}
         <OrbitControls enableZoom={false} target={[0, 0, 0]} />
       </Canvas>
