@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -48,23 +48,22 @@ function filterSkillsData(skillsData: Skill[]) {
 export function Technologies() {
   const filteredSkillsData = filterSkillsData(skillsData)
   const categories = Object.keys(filteredSkillsData)
-  const [tabIndex, setTabIndex] = useState(0);
+  const [tabIndex, setTabIndex] = useState(0)
 
   const onTabChange = (value: string) => {
-    const index = categories.indexOf(value);
-    setTabIndex(index);
+    const index = categories.indexOf(value)
+    setTabIndex(index)
   }
 
   const onNextTab = () => {
-    const nextIndex = (tabIndex + 1) % categories.length;
-    setTabIndex(nextIndex);
+    const nextIndex = (tabIndex + 1) % categories.length
+    setTabIndex(nextIndex)
   }
 
   const onPrevTab = () => {
-    const prevIndex = (tabIndex - 1 + categories.length) % categories.length;
-    setTabIndex(prevIndex);
+    const prevIndex = (tabIndex - 1 + categories.length) % categories.length
+    setTabIndex(prevIndex)
   }
-
 
   return (
     <div className="my-10 w-full">
@@ -73,7 +72,12 @@ export function Technologies() {
       </h3>
       <div className="mt-5">
         <TouchProvider>
-          <Tabs value={categories[tabIndex]} onValueChange={onTabChange} defaultValue={categories[0]} className="">
+          <Tabs
+            value={categories[tabIndex]}
+            onValueChange={onTabChange}
+            defaultValue={categories[0]}
+            className=""
+          >
             <TabsList
               className={`h-18 grid w-full grid-cols-2 gap-2 md:h-9 md:grid-cols-4 lg:grid-cols-4`}
             >
@@ -104,7 +108,9 @@ export function Technologies() {
                               <IconsBundle kind={skill.id} size={10} iconType="icon" />
                             </Button>
                           </HybridTooltipTrigger>
-                          <HybridTooltipContent className="w-auto">{skill.name}</HybridTooltipContent>
+                          <HybridTooltipContent className="w-auto">
+                            {skill.name}
+                          </HybridTooltipContent>
                         </HybridTooltip>
                       ))}
                     </div>
@@ -120,13 +126,23 @@ export function Technologies() {
                     <Pagination className="ml-auto mr-0 w-auto">
                       <PaginationContent>
                         <PaginationItem>
-                          <Button size="icon" variant="outline" className="h-6 w-6" onClick={onPrevTab}>
+                          <Button
+                            size="icon"
+                            variant="outline"
+                            className="h-6 w-6"
+                            onClick={onPrevTab}
+                          >
                             <ChevronLeft className="h-3.5 w-3.5" />
                             <span className="sr-only">Previous Page</span>
                           </Button>
                         </PaginationItem>
                         <PaginationItem>
-                          <Button size="icon" variant="outline" className="h-6 w-6" onClick={onNextTab}>
+                          <Button
+                            size="icon"
+                            variant="outline"
+                            className="h-6 w-6"
+                            onClick={onNextTab}
+                          >
                             <ChevronRight className="h-3.5 w-3.5" />
                             <span className="sr-only">Next Page</span>
                           </Button>
