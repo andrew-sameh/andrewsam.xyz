@@ -256,6 +256,10 @@ const IconsBundle = ({
     return null
   }
 
+  if ((iconType === 'link' || iconType === 'Link' || iconType === 'LinkButton') && !href) {
+    return null
+  }
+
   // if (!href || (kind === 'mail' && !/^mailto:\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(href)))
   //   return (
   //     <SocialSvg
