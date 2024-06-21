@@ -11,28 +11,34 @@ import Hero from '@/components/landing/Hero'
 import { Technologies } from '@/components/landing/Technologies'
 import { Experience } from '@/components/landing/Experience'
 import { GithubCal } from '@/components/landing/GithubCal'
+import { Separator } from '@/components/ui/separator'
 export default function Home({ posts }) {
   return (
     <>
-      <div className="divide-y">
+      <div className="">
         <Hero />
         <SectionContainer>
+          <Separator />
           <Technologies />
         </SectionContainer>
         <SectionContainer>
+          <Separator />
           <Experience />
         </SectionContainer>
         <SectionContainer>
+          <Separator />
           <Suspense fallback="loading..">
             <GithubCal />
           </Suspense>
         </SectionContainer>
         <SectionContainer>
+          <Separator />
           <Suspense fallback="loading..">
             <RecentPosts posts={posts} />
           </Suspense>
         </SectionContainer>
         <SectionContainer>
+          <Separator />
           <Suspense fallback="loading..">
             <TopTracks />
           </Suspense>

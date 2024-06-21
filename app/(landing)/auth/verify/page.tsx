@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 import SiteLogo from '@/components/SiteLogos'
-
+import { genPageMetadata } from 'app/seo'
+export const metadata = genPageMetadata({ title: 'Verify Token' })
 export default function VerifyEmailPage() {
   return (
     <div className="mt-20 flex items-center justify-center  md:mt-20 lg:mt-20 xl:mt-10 2xl:mt-40  ">
