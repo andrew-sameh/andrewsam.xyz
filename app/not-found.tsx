@@ -8,14 +8,17 @@ import { cn } from '@/lib/utils'
 import { buttonVariants, Button } from '@/components/ui/button'
 import SiteLogo from '@/components/SiteLogos'
 
+import { genPageMetadata } from 'app/seo'
+export const metadata = genPageMetadata({ title: 'Check Google Maps!' })
+
 export default async function NotFound() {
   const session = await auth()
 
   return (
     <>
       <Header session={session} />
-      <main className="mb-auto pt-20">
-        <div className="mb-auto flex flex-col content-center space-y-4">
+      <main className="mb-auto pt-32">
+        <div className="mb-auto flex flex-col content-center space-y-10">
           {/* <div className="flex flex-col items-start justify-start md:mt-24 md:flex-row md:items-center md:justify-center md:space-x-6 ">
             <div className="space-x-2 pb-8 pt-6 md:space-y-5">
               <h1 className="text-6xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 md:border-r-2 md:px-6 md:text-8xl md:leading-14">

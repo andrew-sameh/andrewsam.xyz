@@ -31,18 +31,23 @@ import { useState } from 'react'
 
 function filterSkillsData(skillsData: Skill[]) {
   // returns an object with each category as a key and an array of skills as the value
-  return skillsData.reduce(
-    (acc, skill) => {
-      if (!skill.hidden) {
-        if (!acc[skill.category]) {
-          acc[skill.category] = []
-        }
-        acc[skill.category].push(skill)
+  const acc: Record<string, Skill[]> = { 'Most Used': [] }
+
+  skillsData.forEach((skill) => {
+    if (!skill.hidden) {
+      if (!acc[skill.category]) {
+        acc[skill.category] = []
       }
-      return acc
-    },
-    {} as Record<string, Skill[]>
-  )
+      acc[skill.category].push(skill)
+
+      // If the skill is most used, add it to the "Most Used" category
+      if (skill.mostUsed) {
+        acc['Most Used'].push(skill)
+      }
+    }
+  })
+
+  return acc
 }
 
 export function Technologies() {
@@ -79,10 +84,18 @@ export function Technologies() {
             className=""
           >
             <TabsList
-              className={`h-18 grid w-full grid-cols-2 gap-2 md:h-9 md:grid-cols-4 lg:grid-cols-4`}
+              className={`h-27 grid w-full grid-cols-2 gap-2 md:h-9 md:grid-cols-5 md:gap-1 lg:grid-cols-5 xl:gap-2`}
             >
               {categories.map((category) => (
-                <TabsTrigger key={`trigger-${category}`} value={category}>
+                <TabsTrigger
+                  key={`trigger-${category}`}
+                  value={category}
+                  className={
+                    category === 'Most Used'
+                      ? ' col-span-2 from-blue-300 via-sky-300 to-cyan-300 data-[state=active]:bg-gradient-to-tr data-[state=active]:text-slate-900 md:col-span-1 '
+                      : ''
+                  }
+                >
                   {category}
                 </TabsTrigger>
               ))}
@@ -92,9 +105,9 @@ export function Technologies() {
                 <Card key={category} className="w-full">
                   <CardHeader>
                     <CardTitle>{category}</CardTitle>
-                    {/* <CardDescription>
-                      Here are some of the technologies I've worked with
-                    </CardDescription> */}
+                    {category === 'Most Used' && (
+                      <CardDescription>These are my most used technologies.</CardDescription>
+                    )}
                   </CardHeader>
                   <CardContent>
                     <div className="grid grid-cols-5 gap-4 md:grid-cols-8 lg:grid-cols-8 xl:grid-cols-10">
@@ -115,41 +128,43 @@ export function Technologies() {
                       ))}
                     </div>
                   </CardContent>
-                  <CardFooter className="flex flex-row items-center border-t bg-muted/50 px-6 py-3">
-                    {/* <div className="text-xs text-muted-foreground">
+                  {category !== 'Most Used' && (
+                    <CardFooter className="flex flex-row items-center border-t bg-muted/50 px-6 py-3">
+                      {/* <div className="text-xs text-muted-foreground">
                     Updated <time dateTime="2023-11-23">November 23, 2023</time>
                   </div> */}
-                    <div className="flex items-center text-xs text-muted-foreground">
-                      <span className="mx-1 inline-block h-3 w-3 rounded-full bg-green-300"></span>
-                      <span>Currently Learning</span>
-                    </div>
-                    <Pagination className="ml-auto mr-0 w-auto">
-                      <PaginationContent>
-                        <PaginationItem>
-                          <Button
-                            size="icon"
-                            variant="outline"
-                            className="h-6 w-6"
-                            onClick={onPrevTab}
-                          >
-                            <ChevronLeft className="h-3.5 w-3.5" />
-                            <span className="sr-only">Previous Page</span>
-                          </Button>
-                        </PaginationItem>
-                        <PaginationItem>
-                          <Button
-                            size="icon"
-                            variant="outline"
-                            className="h-6 w-6"
-                            onClick={onNextTab}
-                          >
-                            <ChevronRight className="h-3.5 w-3.5" />
-                            <span className="sr-only">Next Page</span>
-                          </Button>
-                        </PaginationItem>
-                      </PaginationContent>
-                    </Pagination>
-                  </CardFooter>
+                      <div className="flex items-center text-xs text-muted-foreground">
+                        <span className="mx-1 inline-block h-3 w-3 rounded-full bg-green-300"></span>
+                        <span>Currently Learning</span>
+                      </div>
+                      <Pagination className="ml-auto mr-0 w-auto">
+                        <PaginationContent>
+                          <PaginationItem>
+                            <Button
+                              size="icon"
+                              variant="outline"
+                              className="h-6 w-6"
+                              onClick={onPrevTab}
+                            >
+                              <ChevronLeft className="h-3.5 w-3.5" />
+                              <span className="sr-only">Previous Page</span>
+                            </Button>
+                          </PaginationItem>
+                          <PaginationItem>
+                            <Button
+                              size="icon"
+                              variant="outline"
+                              className="h-6 w-6"
+                              onClick={onNextTab}
+                            >
+                              <ChevronRight className="h-3.5 w-3.5" />
+                              <span className="sr-only">Next Page</span>
+                            </Button>
+                          </PaginationItem>
+                        </PaginationContent>
+                      </Pagination>
+                    </CardFooter>
+                  )}
                 </Card>
               </TabsContent>
             ))}

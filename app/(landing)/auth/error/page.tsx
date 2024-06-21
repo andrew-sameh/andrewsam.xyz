@@ -3,6 +3,9 @@ import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import SiteLogo from '@/components/SiteLogos'
 
+import { genPageMetadata } from 'app/seo'
+export const metadata = genPageMetadata({ title: 'Authentication Error' })
+
 export default function AuthErroPage() {
   // error passed in query params as ?error=
 

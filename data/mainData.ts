@@ -44,7 +44,7 @@ export interface Experience {
 export interface Skill {
   name: string
   id: string
-  category: "Languages" | "Web Development" | "AI & Data Science" | "DevOps & Tools" 
+  category: "Languages" | "Web Dev" | "AI & Data Science" | "DevOps & Tools" 
   field?: string
   subfield?: string
   description?: string
@@ -52,6 +52,7 @@ export interface Skill {
   level: 'advanced' | 'familiar' | 'learning'
   hidden?: boolean
   href?: string
+  mostUsed?: boolean
 }
 
 export let projectsData: Project[] = [
@@ -220,41 +221,46 @@ export let skillsData: Skill[] = [
     id: 'typescript',
     category: 'Languages',
     level: 'advanced',
+    mostUsed: true,
   },
   {
     name: 'React',
     id: 'react',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Frontend',
     level: 'advanced',
   },
   {
     name: 'Next.js',
     id: 'nextjs',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Fullstack',
     subfield: 'Frameworks',
     level: 'advanced',
+    mostUsed: true,
+
   },
   {
     name: 'Tailwind',
     id: 'tailwind',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Frontend',
     subfield: 'Styling',
     level: 'advanced',
+    mostUsed: true,
+
   },
   {
     name: 'Fiber',
     id: 'fiber',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     level: 'learning',
   },
   {
     name: 'ShadCN',
     id: 'shadcn',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Frontend',
     subfield: 'Styling',
     level: 'advanced',
@@ -262,7 +268,7 @@ export let skillsData: Skill[] = [
   {
     name: 'CSS',
     id: 'css',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Frontend',
     subfield: 'Styling',
     level: 'advanced',
@@ -270,7 +276,7 @@ export let skillsData: Skill[] = [
   {
     name: 'Prisma',
     id: 'prisma',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     subfield: 'ORM',
     level: 'advanced',
@@ -282,6 +288,8 @@ export let skillsData: Skill[] = [
     field: 'AI',
     description: 'GPTs, Whisper',
     level: 'familiar',
+    mostUsed: true,
+
   },
   {
     name: 'LangChain',
@@ -290,12 +298,16 @@ export let skillsData: Skill[] = [
     field: 'AI',
     subfield: 'Frameworks',
     level: 'familiar',
+    mostUsed: true,
+
   },
   {
     name: 'Python',
     id: 'python',
     category: 'Languages',
     level: 'familiar',
+    mostUsed: true,
+
   },
   {
     name: 'C Lang',
@@ -306,28 +318,30 @@ export let skillsData: Skill[] = [
   {
     name: 'Node.js',
     id: 'nodejs',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     level: 'familiar',
   },
   {
     name: 'Fast API',
     id: 'fastapi',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     level: 'familiar',
+    mostUsed: true,
+
   },
   {
     name: 'Django',
     id: 'django',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     level: 'advanced',
   },
   {
     name: 'Flask',
     id: 'flask',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     level: 'advanced',
   },
@@ -337,6 +351,8 @@ export let skillsData: Skill[] = [
     category: 'DevOps & Tools',
     field: 'Containers',
     level: 'advanced',
+    mostUsed: true,
+
   },
   {
     name: 'AWS',
@@ -397,7 +413,7 @@ export let skillsData: Skill[] = [
   {
     name: 'SQL',
     id: 'sql',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     subfield: 'Databases',
     level: 'advanced',
@@ -406,7 +422,7 @@ export let skillsData: Skill[] = [
   {
     name: 'NoSQL',
     id: 'nosql',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     subfield: 'Databases',
     level: 'advanced',
@@ -416,7 +432,7 @@ export let skillsData: Skill[] = [
   {
     name: 'MongoDB',
     id: 'mongodb',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     subfield: 'Databases',
     level: 'learning',
@@ -424,15 +440,17 @@ export let skillsData: Skill[] = [
   {
     name: 'PostgreSQL',
     id: 'postgres',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     subfield: 'Databases',
     level: 'advanced',
+    mostUsed: true,
+
   },
   {
     name: 'MySQL',
     id: 'mysql',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     subfield: 'Databases',
     level: 'advanced',
@@ -440,15 +458,17 @@ export let skillsData: Skill[] = [
   {
     name: 'Redis',
     id: 'redis',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     subfield: 'Databases',
     level: 'advanced',
+    mostUsed: true,
+
   },
   {
     name: 'Bootstrap',
     id: 'bootstrap',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Frontend',
     subfield: 'Styling',
     level: 'advanced',
@@ -549,14 +569,14 @@ export let skillsData: Skill[] = [
   {
     name: 'Celery',
     id: 'celery',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     level: 'advanced',
   },
   {
     name: 'NGINX',
     id: 'nginx',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     level: 'advanced',
   },
@@ -620,7 +640,7 @@ export let skillsData: Skill[] = [
   {
     name: 'Sanity',
     id: 'sanity',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'CMS',
     level: 'advanced',
   },
@@ -635,14 +655,14 @@ export let skillsData: Skill[] = [
   {
     name: 'TestRail',
     id: 'testrail',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Testing',
     level: 'advanced',
   },
   {
     name: 'Locust',
     id: 'locust',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Testing',
     level: 'advanced',
   },
@@ -657,21 +677,21 @@ export let skillsData: Skill[] = [
   {
     name: 'Selenium',
     id: 'selenium',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Testing',
     level: 'advanced',
   },
   {
     name: 'PyTest',
     id: 'pytest',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Testing',
     level: 'advanced',
   },
   {
     name: 'Svelte',
     id: 'svelte',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Frontend',
     subfield: 'Fullstack',
     level: 'advanced',
@@ -679,21 +699,21 @@ export let skillsData: Skill[] = [
   {
     name: 'SvelteKit',
     id: 'sveltekit',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Fullstack',
     level: 'advanced',
   },
   {
     name: 'Vite',
     id: 'vite',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Frontend',
     level: 'advanced',
   },
   {
     name: 'Yarn',
     id: 'yarn',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Frontend',
     level: 'advanced',
   },
@@ -707,7 +727,7 @@ export let skillsData: Skill[] = [
   {
     name: 'Three.js',
     id: 'threejs',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Frontend',
     level: 'advanced',
   },
@@ -734,7 +754,7 @@ export let skillsData: Skill[] = [
    {
     name: 'Framer Motion',
     id: 'framermotion',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Frontend',
     level: 'advanced',
   },
@@ -748,7 +768,7 @@ export let skillsData: Skill[] = [
   {
     name: 'MeiliSearch',
     id: 'meilisearch',
-    category: 'Web Development',
+    category: 'Web Dev',
     field: 'Backend',
     level: 'advanced',
   },

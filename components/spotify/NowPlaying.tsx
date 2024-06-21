@@ -7,6 +7,7 @@ import { Artist, NowPlayingSong } from './types'
 import { SpotifyNowPlayingData } from '@/types/server'
 import { truncate } from '@/lib/utils'
 import NextImage from 'next/image'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
 async function fetchNowPlaying(): Promise<NowPlayingSong | null> {
   try {
     const response = await getNowPlaying()
@@ -56,9 +57,9 @@ export default function NowPlaying() {
           />
         </svg>
         <div className="inline-flex space-x-1">
-          <p className="font-medium text-gray-800 dark:text-gray-200">Not Playing</p>
-          <span className="text-gray-500 dark:text-gray-300">{' – '}</span>
-          <p className="text-gray-500 dark:text-gray-300">Spotify</p>
+          <p className="font-medium ">Not Playing</p>
+          <span className="">{' – '}</span>
+          <p className="">Spotify</p>
         </div>
       </div>
     )
@@ -66,31 +67,41 @@ export default function NowPlaying() {
 
   return (
     <div className="mt-4 flex items-center justify-center space-x-2 sm:flex-row sm:justify-start sm:space-x-2">
-      {/* <NextImage
-          src={nowPlaying.albumImageUrl || ''}
-          // src="https://i.scdn.co/image/ab67616d0000b2731a84d71391df7469c5ab8539"
-          alt={`Album cover of ${nowPlaying.album}`}
-          // alt={`Album cover`}
-          // layout="fill"
-          width={24}
-          height={24}
-          // objectFit="cover"
-          // layout="responsive"
-        /> */}
       <AnimatedBars />
+
       <div className="inline-flex max-w-[70%] items-center space-x-2 text-sm sm:max-w-[90%] sm:text-base">
-        <a
-          className="inline-block truncate font-medium text-gray-800 dark:text-gray-200"
-          href={nowPlaying.songUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {truncate(nowPlaying.title, 24)}
-        </a>
-        <span className="mx-2 text-gray-500 dark:text-gray-300">{' – '}</span>
-        <p className="inline-block truncate text-gray-500 dark:text-gray-300">
-          {truncate(nowPlaying.artist, 20)}
-        </p>
+        <HoverCard>
+          <HoverCardTrigger asChild>
+            <a
+              className="inline-block truncate font-medium "
+              href={nowPlaying.songUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {truncate(nowPlaying.title, 24)}
+            </a>
+          </HoverCardTrigger>
+          <HoverCardContent className="w-auto  border-none ring-0">
+            <div className="flex content-center justify-between space-x-4">
+              <div className="h-24 w-24">
+                <NextImage
+                  src={nowPlaying.albumImageUrl || ''}
+                  alt={`Album cover of ${nowPlaying.album}`}
+                  width={96}
+                  height={96}
+                />
+              </div>
+
+              <div className="w-40 space-y-1">
+                <h4 className="text-sm font-semibold">Title: {nowPlaying.title}</h4>
+                <p className="text-sm">Artist: {nowPlaying.artist}</p>
+                <p className="text-sm">Album: {nowPlaying.album}</p>
+              </div>
+            </div>
+          </HoverCardContent>
+        </HoverCard>
+        <span className="mx-2">{' – '}</span>
+        <p className="inline-block truncate">{truncate(nowPlaying.artist, 20)}</p>
       </div>
     </div>
   )
