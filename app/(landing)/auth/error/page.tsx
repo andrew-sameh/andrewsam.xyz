@@ -3,8 +3,6 @@ import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import SiteLogo from '@/components/SiteLogos'
 
-
-
 export default function AuthErroPage() {
   // error passed in query params as ?error=
 
