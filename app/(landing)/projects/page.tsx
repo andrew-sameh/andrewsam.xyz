@@ -24,18 +24,18 @@ export default async function Projects() {
             </p>
           </div>
           <Separator />
-          <div className="container py-12">
+          <div className="py-12">
             <h3 className="mb-4 text-3xl font-extrabold leading-9 tracking-tight">Work</h3>
-            <div className="-m-4 flex flex-wrap">
+            <div className="-m-4 grid grid-cols-1 gap-2 md:grid-cols-2">
               {workProjects.map((project) => (
                 <ProjectCard key={project.title} project={project} />
               ))}
             </div>
           </div>
           <Separator />
-          <div className="container py-12">
+          <div className=" py-12">
             <h3 className="mb-4 text-3xl font-extrabold leading-9 tracking-tight">Side Projects</h3>
-            <div className="-m-4 flex flex-wrap">
+            <div className="-m-4 grid grid-cols-1 gap-2 md:grid-cols-2">
               {sideProjects.map((project) => (
                 <ProjectCard key={project.title} project={project} />
               ))}

@@ -12,6 +12,7 @@ import { Technologies } from '@/components/landing/Technologies'
 import { Experience } from '@/components/landing/Experience'
 import { GithubCal } from '@/components/landing/GithubCal'
 import { Separator } from '@/components/ui/separator'
+import { MeteorsDemo } from '@/components/landing/GlitchyCards'
 export default function Home({ posts }) {
   return (
     <>
@@ -43,6 +44,11 @@ export default function Home({ posts }) {
             <TopTracks />
           </Suspense>
         </SectionContainer>
+        <SectionContainer>
+          <Separator />
+          <MeteorsDemo />
+        </SectionContainer>
+
         {/* {siteMetadata.newsletter?.provider && (
           <div className="flex items-center justify-center pt-4">{<NewsletterForm />}</div>
         )} */}
