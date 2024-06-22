@@ -17,14 +17,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const href = repository?.url || url
 
   return (
-    <Card className="md m-2 max-w-[544px] border-0 p-2 shadow-lg md:w-1/2">
+    <Card className="md m-2 max-w-[544px] border-0 p-2 shadow-lg ">
       <div className="flex h-full flex-col overflow-hidden rounded-lg border border-transparent">
         <Image
           alt={title}
           src={imgSrc}
-          className="object-cover object-center md:h-36 lg:h-60"
+          className="h-36 object-cover object-center lg:h-60"
           width={1088}
           height={612}
+          // objectFit="cover"
         />
         <div className="flex grow flex-col justify-between space-y-6 p-4 md:p-6">
           <div className="space-y-3">
@@ -39,30 +40,35 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </h2>
             <div className="max-w-none space-y-2 text-gray-500 dark:text-gray-400">
               <p>{repository?.description || description}</p>
-              <div className="flex flex-wrap space-x-1.5">
-                <span className="shrink-0">Built With:</span>
-                {builtWith?.map((tool, index) => {
-                  return (
-                    <span key={index} className="font-semibold text-gray-600 dark:text-gray-300">
-                      {tool}
-                      {index !== builtWith.length - 1 && ','}
-                    </span>
-                  )
-                })}
-              </div>
             </div>
           </div>
-          {repository ? (
-            <GithubRepo repo={repository} />
-          ) : (
-            <Link
-              href={url || '#'}
-              className="hover:text-primary-600 dark:hover:text-primary-400 text-base font-medium leading-6 text-primary-500"
-              aria-label={`Link to ${title}`}
-            >
-              <span data-umami-event="project-learn-more">Learn More &rarr;</span>
-            </Link>
-          )}
+          <div>
+            <div className="my-2 flex flex-wrap space-x-1.5">
+              <span className="shrink-0">Built With:</span>
+              {builtWith?.map((tool, index) => {
+                return (
+                  <span key={index} className="font-semibold text-gray-600 dark:text-gray-300">
+                    {tool}
+                    {index !== builtWith.length - 1 && ','}
+                  </span>
+                )
+              })}
+            </div>
+
+            {repository ? (
+              <GithubRepo repo={repository} />
+            ) : (
+              url && (
+                <Link
+                  href={url}
+                  className="hover:text-primary-600 dark:hover:text-primary-400 text-base font-medium leading-6 text-primary-500"
+                  aria-label={`Link to ${title}`}
+                >
+                  <span data-umami-event="project-learn-more">Learn More &rarr;</span>
+                </Link>
+              )
+            )}
+          </div>
         </div>
       </div>
     </Card>
