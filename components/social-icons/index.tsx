@@ -113,8 +113,22 @@ import { LuStar } from 'react-icons/lu'
 import { RiOpenaiFill } from 'react-icons/ri'
 import { LuSearch } from 'react-icons/lu'
 import { BsSearchHeartFill } from 'react-icons/bs'
+import { LuLayoutDashboard } from 'react-icons/lu'
+import { MdAdminPanelSettings } from 'react-icons/md'
+import { RiToolsFill } from 'react-icons/ri'
+import { LuSettings } from 'react-icons/lu'
+import { LuLogOut } from 'react-icons/lu'
+import { LuPizza } from 'react-icons/lu'
+import { LuCandy } from 'react-icons/lu'
 
 const components = {
+  candy: LuCandy,
+  pizza: LuPizza,
+  dashboard: LuLayoutDashboard,
+  logout: LuLogOut,
+  admin: MdAdminPanelSettings,
+  settings: LuSettings,
+  tools: RiToolsFill,
   mail: LuMail,
   spotify: AiFillSpotify,
   github: AiFillGithub,

@@ -1,6 +1,6 @@
 import { getTopTracks } from '@/lib/spotify'
 import Track from './Track'
-import { Song, TrackInfo } from './types'
+import { Song, TrackInfo } from '@/types/spotify'
 
 async function fetchTopTracks(): Promise<Song[] | null> {
   try {
@@ -11,6 +11,8 @@ async function fetchTopTracks(): Promise<Song[] | null> {
       artist: track.artists.map((_artist) => _artist.name).join(', '),
       songUrl: track.external_urls.spotify,
       title: track.name,
+      albumImageUrl: track.album.images[0].url,
+      album: track.album.name,
     }))
 
     return tracks

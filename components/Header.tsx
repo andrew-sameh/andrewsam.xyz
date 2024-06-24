@@ -1,6 +1,6 @@
 'use client'
 import siteMetadata from '@/data/siteMetadata'
-import headerNavLinks from '@/data/headerNavLinks'
+import { headerNavLinks } from '@/data/navLinks'
 import Link from './Link'
 import MobileNav from './MobileNav'
 import ThemeSwitch from '@/components/ThemeSwitcher'
