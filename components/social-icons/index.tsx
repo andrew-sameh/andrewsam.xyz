@@ -89,6 +89,7 @@ import {
   VLLM,
   Locust,
   Fiber,
+  Stripe,
 } from './icons'
 
 import Image from 'next/image'
@@ -234,6 +235,7 @@ const components = {
   locust: Locust,
   vllm: VLLM,
   fiber: Fiber,
+  stripe: Stripe,
 }
 
 type IconsBundleProps = {
