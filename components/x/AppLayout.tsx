@@ -10,7 +10,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 interface AppLayoutProps extends React.HTMLProps<HTMLDivElement> {
   children: ReactNode
   defaultCollapsed?: boolean
-  session: Session
+  session: Session | null
 }
 
 export function AppLayout({ children, defaultCollapsed = false, session }: AppLayoutProps) {

@@ -19,7 +19,7 @@ import SiteLogo from '@/components/SiteLogos'
 
 interface HeaderProps {
   isCollapsed?: boolean
-  session: Session
+  session: Session | null
 }
 
 export function Header({ session, isCollapsed }: HeaderProps) {
@@ -129,7 +129,7 @@ export function Header({ session, isCollapsed }: HeaderProps) {
           </div>
         </form>
       </div>
-      <UserDropdown session={session} />
+      {session && <UserDropdown session={session} />}
       <ThemeToggle />
     </header>
   )

@@ -236,7 +236,7 @@ export function IncomeForm() {
           variant={'outline'}
           className="sm:mx-auto sm:w-56"
         >
-          {isLoading && <LuLoader2 className="ml-2 h-4 w-4 animate-spin" />}
+          {isLoading && <LuLoader2 className="mr-2 h-4 w-4 animate-spin" />}
           Submit
         </Button>
       </form>
