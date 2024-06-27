@@ -87,36 +87,147 @@ interface TaxPerBracket {
   bracket: string
   percentage: number
   tax: number
+  bracketIndex: number
 }
 
 interface ComponentTax {
-  total_tax: number
-  tax_brackets: TaxPerBracket[]
+  [key: string]: {
+    total_tax: number
+    tax_brackets: TaxPerBracket[]
+  }
 }
 
 interface ComponentTaxMonthly {
-  total_tax: number
-  tax_brackets: TaxPerBracket[]
+  [key: string]: {
+    total_tax: number
+    tax_brackets: TaxPerBracket[]
+  }
 }
+
+// function calculateTax(
+//   grossSalaryComponents: GrossSalaryComponents,
+//   taxData: TaxData
+// ): [number, number, ComponentTax, ComponentTaxMonthly] {
+//   const salary = grossSalaryComponents.salary
+//   const bonus = grossSalaryComponents.bonus
+//   const adjustment = grossSalaryComponents.adjustment
+//   const LAP = grossSalaryComponents.lap
+//   const allocations = grossSalaryComponents.allocations
+
+//   let grossSalary = salary + bonus + adjustment + LAP + allocations
+
+//   let tier: number | null = null
+//   let taxBrackets: TaxBracket[] = []
+
+//   if (grossSalary < 0) {
+//     grossSalary = 0
+//   }
+
+//   for (const tierData of taxData.tiers) {
+//     if (
+//       tierData.taxBrackets[0].from <= grossSalary &&
+//       grossSalary < tierData.taxBrackets[tierData.taxBrackets.length - 1].to
+//     ) {
+//       tier = tierData.tier
+//       taxBrackets = tierData.taxBrackets
+//       break
+//     }
+//   }
+
+//   if (tier === null) {
+//     throw new Error('Invalid gross_salary. No matching tax brackets found.')
+//   }
+
+//   let totalTax = 0
+//   let taxPerBracket: ComponentTax = { total_tax: 0, tax_brackets: [] }
+//   let taxPerBracketMonthly: ComponentTaxMonthly = { total_tax: 0, tax_brackets: [] }
+
+//   let lastbracketDict: TaxBracket | null = null
+//   let lastAmount = 0
+//   let lastBracket = 0
+//   let totalGross = 0
+
+//   const components = {
+//     Salary: salary,
+//     Bonus: bonus,
+//     Allocations: allocations,
+//     LAP: LAP,
+//     Adjustment: adjustment,
+//   }
+
+//   for (const [component, componentGross] of Object.entries(components)) {
+//     let componentTotalTax = 0
+//     const componentTaxPerBracket: TaxPerBracket[] = []
+//     const componentTaxPerBracketMonthly: TaxPerBracket[] = []
+//     const taxBracketsX = taxBrackets.slice(lastBracket)
+
+//     if (lastbracketDict) {
+//       taxBracketsX[0] = lastbracketDict
+//     }
+
+//     totalGross += componentGross
+
+//     for (const bracket of taxBracketsX) {
+//       lastBracket++
+//       const bracketFrom = bracket.from
+//       const bracketTo = bracket.to
+//       const taxPercentage = bracket.percentage
+
+//       const taxableAmount = Math.min(totalGross, bracketTo) - bracketFrom
+
+//       if (taxableAmount > 0) {
+//         const bracketTax = taxableAmount * taxPercentage
+//         componentTotalTax += bracketTax
+//         componentTaxPerBracket.push({
+//           bracket: `${bracketFrom}-${bracketTo}`,
+//           percentage: taxPercentage,
+//           tax: bracketTax,
+//         })
+//         componentTaxPerBracketMonthly.push({
+//           bracket: `${Math.floor(bracketFrom / 12)}-${Math.floor(bracketTo / 12)}`,
+//           percentage: taxPercentage,
+//           tax: Math.round((bracketTax / 12) * 100) / 100,
+//         })
+//       }
+
+//       if (totalGross <= bracketTo) {
+//         lastAmount = taxableAmount
+//         lastBracket--
+//         lastbracketDict = {
+//           from: bracket.from + lastAmount,
+//           to: bracket.to,
+//           percentage: bracket.percentage,
+//         }
+//         break
+//       }
+//     }
+
+//     taxPerBracket[component] = {
+//       total_tax: componentTotalTax,
+//       tax_brackets: componentTaxPerBracket,
+//     }
+//     taxPerBracketMonthly[component] = {
+//       total_tax: componentTotalTax / 12,
+//       tax_brackets: componentTaxPerBracketMonthly,
+//     }
+
+//     totalTax += componentTotalTax
+//   }
+
+//   return [tier, totalTax, taxPerBracket, taxPerBracketMonthly]
+// }
 
 function calculateTax(
   grossSalaryComponents: GrossSalaryComponents,
   taxData: TaxData
 ): [number, number, ComponentTax, ComponentTaxMonthly] {
-  const salary = grossSalaryComponents.salary
-  const bonus = grossSalaryComponents.bonus
-  const adjustment = grossSalaryComponents.adjustment
-  const LAP = grossSalaryComponents.lap
-  const allocations = grossSalaryComponents.allocations
+  const { salary, bonus, adjustment, lap: LAP, allocations } = grossSalaryComponents
 
   let grossSalary = salary + bonus + adjustment + LAP + allocations
+  if (grossSalary < 0) grossSalary = 0
 
   let tier: number | null = null
   let taxBrackets: TaxBracket[] = []
-
-  if (grossSalary < 0) {
-    grossSalary = 0
-  }
 
   for (const tierData of taxData.tiers) {
     if (
@@ -134,36 +245,35 @@ function calculateTax(
   }
 
   let totalTax = 0
-  const taxPerBracket: ComponentTax = { total_tax: 0, tax_brackets: [] }
-  const taxPerBracketMonthly: ComponentTaxMonthly = { total_tax: 0, tax_brackets: [] }
+  const taxPerBracket: ComponentTax = {}
+  const taxPerBracketMonthly: ComponentTaxMonthly = {}
 
-  let lastbracketDict: TaxBracket | null = null
+  let lastBracketDict: TaxBracket | null = null
   let lastAmount = 0
-  let lastBracket = 0
+  let lastBracketIndex = 0
   let totalGross = 0
 
   const components = {
     Salary: salary,
     Bonus: bonus,
-    Adjustment: adjustment,
-    LAP: LAP,
     Allocations: allocations,
+    LAP: LAP,
+    Adjustment: adjustment,
   }
 
   for (const [component, componentGross] of Object.entries(components)) {
     let componentTotalTax = 0
     const componentTaxPerBracket: TaxPerBracket[] = []
     const componentTaxPerBracketMonthly: TaxPerBracket[] = []
-    const taxBracketsX = taxBrackets.slice(lastBracket)
+    const taxBracketsX = taxBrackets.slice(lastBracketIndex)
 
-    if (lastbracketDict) {
-      taxBracketsX[0] = lastbracketDict
+    if (lastBracketDict) {
+      taxBracketsX[0] = lastBracketDict
     }
 
     totalGross += componentGross
 
     for (const bracket of taxBracketsX) {
-      lastBracket++
       const bracketFrom = bracket.from
       const bracketTo = bracket.to
       const taxPercentage = bracket.percentage
@@ -177,23 +287,26 @@ function calculateTax(
           bracket: `${bracketFrom}-${bracketTo}`,
           percentage: taxPercentage,
           tax: bracketTax,
+          bracketIndex: lastBracketIndex,
         })
         componentTaxPerBracketMonthly.push({
           bracket: `${Math.floor(bracketFrom / 12)}-${Math.floor(bracketTo / 12)}`,
           percentage: taxPercentage,
           tax: Math.round((bracketTax / 12) * 100) / 100,
+          bracketIndex: lastBracketIndex,
         })
       }
 
       if (totalGross <= bracketTo) {
         lastAmount = taxableAmount
-        lastBracket--
-        lastbracketDict = {
+        lastBracketDict = {
           from: bracket.from + lastAmount,
           to: bracket.to,
           percentage: bracket.percentage,
         }
         break
+      } else {
+        lastBracketIndex++
       }
     }
 
@@ -243,8 +356,8 @@ export function getSalaryDict(
   const bonusTaxBase = bonusBase
   const allocationRate = taxData.allocationRate
   const martyrsTaxRate = taxData.martyrsTaxRate
-
   const dailyRate = grossSalaryBase / 30
+
   const allocationDailyRate = dailyRate * allocationRate
   const grossAllocations = allocationDailyRate * allocations
   const annualAllocation = dailyRate * 5

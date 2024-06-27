@@ -7,7 +7,7 @@ export async function POST(req, res) {
       requestBody
     const adjustmentUpdated = adjustment ? adjustment / 100 : 0
     const increaseUpdated = increase ? increase / 100 : 0
-    const updatedGross = gross * (1 + adjustmentUpdated)
+    const updatedGross = gross * (1 + increaseUpdated)
 
     const salaryDict = getSalaryDict(
       startingDate,
@@ -17,7 +17,7 @@ export async function POST(req, res) {
       allocations,
       deductions,
       0.255,
-      increaseUpdated
+      adjustmentUpdated
     )
 
     return new Response(JSON.stringify(salaryDict), { status: 200 })

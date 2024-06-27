@@ -10,6 +10,7 @@ import { LuCalendarDays } from 'react-icons/lu'
 import * as React from 'react'
 import { LuLoader2 } from 'react-icons/lu'
 import { getSalaryDict } from '@/components/x/calc/CalFunctions'
+import { Badge } from '@/components/ui/badge'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -96,7 +97,19 @@ export function IncomeForm() {
         className="grid w-full  items-start gap-6 overflow-auto p-4 pt-0"
       >
         <fieldset className="grid grid-cols-2 gap-4 rounded-lg border p-4 md:grid-cols-3 xl:grid-cols-6">
-          <legend className="-ml-1 px-1 text-sm font-medium">Salary Details</legend>
+          <legend className="-ml-1 px-1 text-sm font-medium">
+            Salary Details
+            {salarySettings.adjustment > 0 && (
+              <Badge variant="outline" className="ml-1">
+                Adj: {salarySettings.adjustment}%
+              </Badge>
+            )}
+            {salarySettings.increase > 0 && (
+              <Badge variant="outline" className="ml-1">
+                Inc: {salarySettings.increase}%
+              </Badge>
+            )}
+          </legend>
           <div className="grid gap-3">
             <FormField
               control={form.control}
@@ -114,7 +127,7 @@ export function IncomeForm() {
                             !field.value && 'text-muted-foreground'
                           )}
                         >
-                          {field.value ? format(field.value, 'PPP') : <span>Pick a date</span>}
+                          {field.value ? format(field.value, 'PP') : <span>Pick a date</span>}
                           <LuCalendarDays className="ml-auto h-4 w-4 opacity-50" />
                         </Button>
                       </FormControl>
@@ -126,6 +139,7 @@ export function IncomeForm() {
                         onSelect={field.onChange}
                         disabled={(date) => date > new Date() || date < new Date('1900-01-01')}
                         initialFocus
+                        captionLayout="dropdown-buttons"
                       />
                     </PopoverContent>
                   </Popover>

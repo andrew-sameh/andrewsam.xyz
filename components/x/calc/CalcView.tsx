@@ -1,14 +1,16 @@
 'use client'
 
-import { format } from 'date-fns'
 import { cn } from '@/lib/utils'
-import { LuCalendarDays } from 'react-icons/lu'
 import * as React from 'react'
-import { getSalaryDict } from '@/components/x/calc/CalFunctions'
+import { Badge } from '@/components/ui/badge'
+import { LuBadgePercent } from 'react-icons/lu'
+import { LuCalendarDays } from 'react-icons/lu'
 
 import { useAtom } from 'jotai'
 import { salaryBreakdownAtom } from '@/components/atoms/toolsAtoms' // Import the atom
 import { CashCardX as CashCard } from '@/components/x/calc/CashCards'
+import { SalaryBreakdownTable, LapTable } from '@/components/x/calc/CalcTables'
+import { SalaryBreakdownPie, TaxStackedBarChart } from '@/components/x/calc/CalcCharts'
 export function IncomeView() {
   const [salaryBreakdown] = useAtom(salaryBreakdownAtom)
 
@@ -18,52 +20,40 @@ export function IncomeView() {
 
   return (
     <div className="w-full">
-      {/* 
-      //     "GrossDailyRate": 42183.27,
-      //     "NetBasic": 921639.69,
-      //     "GrossBonus": 45264,
-      //     "TotalGross": 1629161.5,
-      //     "FinalPayment": 1183095.73,
-//     "GrossAllocationsDayRate": 63274.9,
-//     "SocialInsurace": 1386,
-//     "TaxTier": 6,
-//     "GrossAllocations": 316374.5,
-//     "TotalTax": 446065.77,
-//     "TotalBonus": 371663.5,
-//     "TotalDeductions": 0,
-//     "NextLapMonths": 1,
-//     "NextLapAmount": 7592988,
+      <div className="mb-2 flex flex-row items-center justify-center space-x-2">
+        <Badge className="">
+          <LuBadgePercent className="mr-1 h-4 w-4" />
+          Tax Tier: {salaryBreakdown.taxTier}{' '}
+        </Badge>
+        <Badge className="">
+          <LuCalendarDays className="mr-1 h-4 w-4" />
+          Next LAP: {salaryBreakdown.nextLapMonths} Mos{' '}
+        </Badge>
+      </div>
 
-//     "MonthsWorked": 29,
-//     "GrossEOY5Annuals": 210916.33,
-//     "SalaryTax": 342472.31,
-//     "GrossAdjustments": 0,
-//     "AdjustmentsTax": 0,
-*/}
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 ">
+        <CashCard header="Total Gross" amount={salaryBreakdown.totalGross} mode={'gross'} />
+        <CashCard header="Total Tax" amount={salaryBreakdown.totalTax} mode={'tax'} />
+        <CashCard header="Net Basic Salary" amount={salaryBreakdown.netBasic} mode={'basic'} />
+        <CashCard header="Final Payment" amount={salaryBreakdown.finalPayment} mode={'final'} />
+        <CashCard header="Total Bonus" amount={salaryBreakdown.totalBonus} mode={'bonus'} />
 
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-6 ">
-        <CashCard header="Gross Daily Rate" amount={salaryBreakdown.grossDailyRate} />
-        <CashCard header="Net Basic Salary" amount={salaryBreakdown.netBasic} />
-        <CashCard header="Gross Bonus" amount={salaryBreakdown.grossBonus} />
-        <CashCard header="Total Gross" amount={salaryBreakdown.totalGross} />
-        <CashCard header="Final Payment" amount={salaryBreakdown.finalPayment} />
+        <CashCard header="Next LAP Amount" amount={salaryBreakdown.nextLapAmount} mode={'lap'} />
+        <CashCard header="Gross Daily Rate" amount={salaryBreakdown.grossDailyRate} mode={'day'} />
+
         <CashCard
-          header="Gross Allocations Day Rate"
+          header="Gross Alloc. Day"
           amount={salaryBreakdown.grossAllocationDailyRate}
+          mode={'alloc'}
         />
-        <CashCard header="Social Insurance" amount={salaryBreakdown.socialInsurance} />
-        <CashCard header="Tax Tier" amount={salaryBreakdown.taxTier} />
-        <CashCard header="Gross Allocations" amount={salaryBreakdown.grossAllocations} />
-        <CashCard header="Total Tax" amount={salaryBreakdown.totalTax} />
-        <CashCard header="Total Bonus" amount={salaryBreakdown.totalBonus} />
-        <CashCard header="Total Deductions" amount={salaryBreakdown.totalDeductions} />
-        <CashCard header="Next LAP Months" amount={salaryBreakdown.nextLapMonths} />
-        <CashCard header="Next LAP Amount" amount={salaryBreakdown.nextLapAmount} />
-        <CashCard header="Months Worked" amount={salaryBreakdown.monthsWorked} />
-        <CashCard header="Gross EOY5 Annuals" amount={salaryBreakdown.grossAnnualAllocation} />
-        <CashCard header="Salary Tax" amount={salaryBreakdown.salaryTax} />
-        <CashCard header="Gross Adjustments" amount={salaryBreakdown.grossAdjustments} />
-        <CashCard header="Adjustments Tax" amount={salaryBreakdown.adjustmentsTax} />
+      </div>
+      <div className="my-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <SalaryBreakdownTable details={salaryBreakdown} />
+        <SalaryBreakdownPie details={salaryBreakdown} />
+      </div>
+      <div className="my-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <LapTable details={salaryBreakdown} />
+        <TaxStackedBarChart details={salaryBreakdown} />
       </div>
     </div>
   )
