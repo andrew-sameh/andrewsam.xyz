@@ -24,14 +24,14 @@ export default function UserDropdown({ session }: { session: Session }) {
     <div className="relative flex justify-center text-left">
       <Popover>
         <PopoverTrigger asChild>
-          <button className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full transition-all duration-75 focus:outline-none active:scale-95 sm:h-9 sm:w-9">
+          <button className="mx-1 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full transition-all duration-75 focus:outline-none active:scale-95 sm:h-9 sm:w-9">
             <Avatar>
               <AvatarImage src={session?.user?.image || ''} alt="User Avatar" />
               <AvatarFallback>AS</AvatarFallback>
             </Avatar>
           </button>
         </PopoverTrigger>
-        <PopoverContent className="w-full space-y-2 rounded-lg">
+        <PopoverContent className="w-full space-y-2 rounded-lg border-none ring-0">
           <div className="">
             <div className="p-2">
               {session?.user?.name && (
@@ -54,7 +54,7 @@ export default function UserDropdown({ session }: { session: Session }) {
               variant={'outline'}
               className="relative my-1 flex w-full items-center justify-start space-x-2 rounded-md border-0 p-2 text-left text-sm transition-all duration-75"
             >
-              <Link href="/ai" className="flex w-full space-x-2 ">
+              <Link href="/x" className="flex w-full space-x-2 ">
                 <MdOutlineRocketLaunch className="h-4 w-4" />
                 <p className="text-sm">App</p>
               </Link>

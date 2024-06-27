@@ -655,15 +655,15 @@ export let skillsData: Skill[] = [
   {
     name: 'TestRail',
     id: 'testrail',
-    category: 'Web Dev',
-    field: 'Testing',
+    category: 'DevOps & Tools',
+    field: 'DevOps & Tools',
     level: 'advanced',
   },
   {
     name: 'Locust',
     id: 'locust',
-    category: 'Web Dev',
-    field: 'Testing',
+    category: 'DevOps & Tools',
+    field: 'DevOps & Tools',
     level: 'advanced',
   },
   {
@@ -677,15 +677,15 @@ export let skillsData: Skill[] = [
   {
     name: 'Selenium',
     id: 'selenium',
-    category: 'Web Dev',
-    field: 'Testing',
+    category: 'DevOps & Tools',
+    field: 'DevOps & Tools',
     level: 'advanced',
   },
   {
     name: 'PyTest',
     id: 'pytest',
-    category: 'Web Dev',
-    field: 'Testing',
+    category: 'DevOps & Tools',
+    field: 'DevOps & Tools',
     level: 'advanced',
   },
   {
@@ -706,16 +706,18 @@ export let skillsData: Skill[] = [
   {
     name: 'Vite',
     id: 'vite',
-    category: 'Web Dev',
-    field: 'Frontend',
+    category: 'DevOps & Tools',
+    field: 'DevOps & Tools',
     level: 'advanced',
   },
   {
     name: 'Yarn',
     id: 'yarn',
-    category: 'Web Dev',
-    field: 'Frontend',
+    category: 'DevOps & Tools',
+    field: 'DevOps & Tools',
     level: 'advanced',
+    hidden: true
+
   },
   {
     name: 'Tableau',
@@ -743,6 +745,7 @@ export let skillsData: Skill[] = [
     category: 'DevOps & Tools',
     field: 'Tools',
     level: 'advanced',
+    hidden: true
   },
    {
     name: 'Github Actions',
@@ -770,6 +773,20 @@ export let skillsData: Skill[] = [
     id: 'meilisearch',
     category: 'Web Dev',
     field: 'Backend',
+    level: 'advanced',
+  },
+  {
+    name: 'Stripe',
+    id: 'stripe',
+    category: 'Web Dev',
+    field: 'Backend',
+    level: 'advanced',
+  },
+  {
+    name: 'Notion',
+    id: 'notion',
+    category: 'DevOps & Tools',
+    field: 'Tools',
     level: 'advanced',
   },
 ]

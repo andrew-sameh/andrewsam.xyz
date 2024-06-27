@@ -3,8 +3,7 @@ import { getNowPlaying } from '@/lib/spotify'
 import useSWR from 'swr'
 import { swrFetcher } from '@/lib/utils'
 import AnimatedBars from './AnimatedBars'
-import { Artist, NowPlayingSong } from './types'
-import { SpotifyNowPlayingData } from '@/types/server'
+import { Artist, NowPlayingSong } from '@/types/spotify'
 import { truncate } from '@/lib/utils'
 import NextImage from 'next/image'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
@@ -43,7 +42,7 @@ async function fetchNowPlaying(): Promise<NowPlayingSong | null> {
 
 export default function NowPlaying() {
   // const nowPlaying = await fetchNowPlaying();
-  const { data } = useSWR<SpotifyNowPlayingData>(`/api/spotify?mode=now-playing`, swrFetcher)
+  const { data } = useSWR<NowPlayingSong>(`/api/spotify?mode=now-playing`, swrFetcher)
 
   const nowPlaying = data
 
