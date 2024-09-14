@@ -121,7 +121,7 @@ import { LuSettings } from 'react-icons/lu'
 import { LuLogOut } from 'react-icons/lu'
 import { LuPizza } from 'react-icons/lu'
 import { LuCandy } from 'react-icons/lu'
-import { SiBuymeacoffee } from "react-icons/si";
+import { SiBuymeacoffee } from 'react-icons/si'
 
 const components = {
   candy: LuCandy,
