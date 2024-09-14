@@ -31,6 +31,9 @@ export default function Footer() {
               <li>
                 <IconsBundle kind="instagram" href={siteMetadata.instagram} size={5} />
               </li>
+              <li>
+                <IconsBundle kind="buymeacoffee" href={siteMetadata.buymeacoffee} size={5} />
+              </li>
               {/* <li>
               <IconsBundle kind="twitter" href={siteMetadata.twitter} size={6} />
             </li> */}
@@ -55,6 +58,10 @@ export default function Footer() {
               <li>{` • `}</li>
               <li>
                 <Link href="/">{siteMetadata.title}</Link>
+              </li>
+              <li>{` • `}</li>
+              <li>
+                <IconsBundle kind="githubFork" href={siteMetadata.siteRepo} size={5} />
               </li>
             </ul>
             <ul className="flex space-x-2">
