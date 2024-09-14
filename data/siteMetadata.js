@@ -25,6 +25,7 @@ const siteMetadata = {
   // threads: 'https://www.threads.net',
   instagram: 'https://www.instagram.com/andrewzameh/',
   spotify: 'https://open.spotify.com/user/nm8cvqw3q56ft39knd63d1dgw',
+  buymeacoffee: 'https://buymeacoffee.com/andrewsameh',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the
