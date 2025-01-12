@@ -104,8 +104,18 @@ export let projectsData: Project[] = [
     title: 'Personal website',
     imgSrc: '/static/images/projects/6.jpg',
     repo: 'andrewsam.xyz',
+    url: 'https://andrewsam.xyz',
     builtWith: ['Next.js', 'Tailwind', 'Typescript', 'Prisma', 'Umami'],
   },
+  {
+    type: 'self',
+    title: 'AI Voice Assistant',
+    imgSrc: '/static/images/projects/7.jpg',
+    builtWith: ['OpenAI', 'Langchain', 'Deepgram', 'FastAPI', 'Docker', 'Oracle Cloud', 'LiveKit Agents', 'Pinecone', 'Next.js', 'Postgres', 'WebRTC', 'NGINX'],
+    description: "The AI Voice Assistant is a full-stack application designed to facilitate seamless customer interactions through voice commands. It leverages WebRTC to handle reservations, communicate with external APIs for information retrieval, and interact with the backend to manage reservations, including submissions, inquiries, and cancellations. Additionally, the project features a second voice assistant based on Retrieval-Augmented Generation (RAG), allowing users to upload PDF or DOCX files and engage in voice-based conversations to query the document's content.",
+    repo: 'VoiceAssistant-Backend',
+    url:'https://rtc.andrewsam.xyz/'
+  }
   
 ];
 
@@ -182,12 +192,13 @@ export let experienceData: Company[] = [
     description: 'FlairsTech is a software development company that specializes in building custom software solutions for businesses. We help businesses automate their processes and improve their efficiency.',
     imgSrc: 'https://media.licdn.com/dms/image/C4D0BAQFEqFIZYFhFpA/company-logo_200_200/0/1630540236589/flairstech_logo?e=1726704000&v=beta&t=AuvxQoMg94CqpL1A2-SOgZIChOIE14uscukufiaUDv0',
     url: 'https://flairstech.com/',
-    active: true,
+    active: false,
     items: [
       {
         title: 'AI Fullstack Developer (Consultant)',
         roleType: 'Consultant',
-        startDate: '2023/02/14',
+        startDate: '2023/02/01',
+        endDate: '2025/01/01',
         description: 'Developed AI solutions for the operations department, enhancing efficiency and performance across various tasks. Created an AI web application for the quality team, reducing call/ticket evaluation time by up to 80% and achieving a 90% utilization rate for overall call evaluations. Led the development and deployment of the web application, handling frontend, backend, AI microservices, server configurations, and deployment.',
         techStack: [
           { name: 'Mistral LLM', href: '#' },
@@ -202,7 +213,7 @@ export let experienceData: Company[] = [
           { name: 'nginx', href: 'https://www.nginx.com/' },
           { name: 'langchain', href: 'https://www.langchain.com/' },
         ],
-        active: true,
+        active: false,
       },
     ],
   },
