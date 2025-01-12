@@ -32,14 +32,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <h2 className="text-2xl font-bold leading-8 tracking-tight">
               {href ? (
                 <Link href={href} aria-label={`Link to ${title}`}>
-                  <span data-umami-event={title?? "project-press"}>{title}</span>
+                  <span data-umami-event={title || 'project-press'}>{title}</span>
                 </Link>
               ) : (
                 title
               )}
             </h2>
             <div className="max-w-none space-y-2 text-gray-500 dark:text-gray-400">
-              <p>{description || repository?.description }</p>
+              <p>{description || repository?.description}</p>
             </div>
           </div>
           <div>
