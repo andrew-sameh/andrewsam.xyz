@@ -14,7 +14,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const { title, description, imgSrc, url, repo, builtWith } = project
   const { data } = useSWR(repo ? `/api/github?repo=${repo}` : null, swrFetcher)
   const repository: GithubRepository | undefined = data?.repository
-  const href = repository?.url || url
+  const href = url || repository?.url
 
   return (
     <Card className="md m-2 max-w-[544px] border-0 p-2 shadow-lg ">
@@ -32,14 +32,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <h2 className="text-2xl font-bold leading-8 tracking-tight">
               {href ? (
                 <Link href={href} aria-label={`Link to ${title}`}>
-                  <span data-umami-event="project-title-link">{title}</span>
+                  <span data-umami-event={title?? "project-press"}>{title}</span>
                 </Link>
               ) : (
                 title
               )}
             </h2>
             <div className="max-w-none space-y-2 text-gray-500 dark:text-gray-400">
-              <p>{repository?.description || description}</p>
+              <p>{description || repository?.description }</p>
             </div>
           </div>
           <div>
